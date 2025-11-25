@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آزمون جامع اکسیژن‌رسانی - پاتر و پری
-    استاد : دکتر زهرا رستمی 
-    dev : علی رضوی 
-    دانشگاه آزاد فیروزآباد
-    1404
-    </title>
+    <title>بانک جامع آزمون پرستاری - پاتر و پری</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #f3f4f6;
+            background-color: #f8fafc;
         }
         .option-card {
             transition: all 0.2s ease;
@@ -24,663 +19,434 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         .correct-answer {
-            background-color: #d1fae5 !important;
-            border-color: #10b981 !important;
-            color: #065f46 !important;
+            background-color: #d1fae5 !important; /* Green-100 */
+            border-color: #10b981 !important; /* Green-500 */
+            color: #065f46 !important; /* Green-800 */
         }
         .wrong-answer {
-            background-color: #fee2e2 !important;
-            border-color: #ef4444 !important;
-            color: #991b1b !important;
+            background-color: #fee2e2 !important; /* Red-100 */
+            border-color: #ef4444 !important; /* Red-500 */
+            color: #991b1b !important; /* Red-800 */
+        }
+        /* Custom Scrollbar for long explanations */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
 
-    <!-- Start Screen -->
-    <div id="start-screen" class="bg-white p-8 rounded-2xl shadow-xl max-w-2xl w-full text-center">
-        <div class="mb-6 text-teal-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <!-- Main Menu Screen -->
+    <div id="menu-screen" class="bg-white p-8 rounded-2xl shadow-xl max-w-4xl w-full text-center">
+        <div class="mb-8 text-indigo-600 flex justify-center space-x-4 space-x-reverse">
+            <!-- Icons for both chapters -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
+            <span class="text-4xl text-gray-300">|</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
         </div>
-        <h1 class="text-3xl font-bold mb-4 text-gray-800">بانک آزمون اکسیژن‌رسانی</h1>
-        <p class="text-gray-600 mb-8 leading-relaxed">
-            این آزمون شامل ۷۰ سوال استاندارد از فصل اکسیژن‌رسانی کتاب اصول و فنون پرستاری پاتر و پری است.
+        
+        <h1 class="text-3xl font-extrabold mb-4 text-gray-800">بانک جامع آزمون پرستاری</h1>
+        <p class="text-gray-600 mb-10 text-lg">
+            منبع: اصول و مهارت‌های پرستاری پاتر و پری
             <br>
-   <br>استاد : دکتر زهرا رستمی  
-  <br>  dev : علی رضوی 
-  <br>  دانشگاه آزاد فیروزآباد
-    <br>1404
+            <span class="text-sm text-gray-500 mt-2 block">لطفاً نوع آزمون خود را انتخاب کنید:</span>
         </p>
-        <button onclick="startQuiz()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition transform hover:scale-105 text-lg w-full sm:w-auto">
-            شروع آزمون
-        </button>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Option 1: Oxygenation -->
+            <button onclick="startQuiz('oxygen')" class="group bg-white border-2 border-teal-100 hover:border-teal-500 p-6 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col items-center">
+                <div class="bg-teal-50 p-4 rounded-full mb-4 group-hover:bg-teal-100 transition">
+                    <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-800 text-lg mb-2">فصل اکسیژن‌رسانی</h3>
+                <p class="text-sm text-gray-500">۷۰ سوال تخصصی</p>
+                <span class="mt-4 text-teal-600 font-medium text-sm group-hover:underline">شروع آزمون &larr;</span>
+            </button>
+
+            <!-- Option 2: Vital Signs -->
+            <button onclick="startQuiz('vitals')" class="group bg-white border-2 border-red-100 hover:border-red-500 p-6 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col items-center">
+                <div class="bg-red-50 p-4 rounded-full mb-4 group-hover:bg-red-100 transition">
+                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-800 text-lg mb-2">فصل علایم حیاتی</h3>
+                <p class="text-sm text-gray-500">۷۰ سوال تخصصی</p>
+                <span class="mt-4 text-red-600 font-medium text-sm group-hover:underline">شروع آزمون &larr;</span>
+            </button>
+
+            <!-- Option 3: Mixed -->
+            <button onclick="startQuiz('mixed')" class="group bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col items-center justify-center border-2 border-transparent">
+                <div class="bg-white/20 p-4 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-1">آزمون ترکیبی جامع</h3>
+                <p class="text-indigo-100 text-sm opacity-90">۱۴۰ سوال (میکس)</p>
+                <span class="mt-4 bg-white text-indigo-600 px-4 py-1 rounded-full text-xs font-bold">پیشنهادی</span>
+            </button>
+        </div>
     </div>
 
     <!-- Quiz Screen -->
-    <div id="quiz-screen" class="bg-white rounded-2xl shadow-xl max-w-3xl w-full hidden overflow-hidden flex flex-col" style="min-height: 500px;">
+    <div id="quiz-screen" class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full hidden overflow-hidden flex flex-col relative" style="min-height: 600px;">
         <!-- Header -->
-        <div class="bg-gray-50 border-b p-4 flex justify-between items-center">
-            <span class="text-gray-500 font-medium" id="progress-text">سوال ۱ از ۷۰</span>
-            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-bold" id="score-badge">امتیاز: ۰</span>
+        <div class="bg-gray-50 border-b p-4 flex justify-between items-center sticky top-0 z-10">
+            <div class="flex items-center gap-2">
+                 <button onclick="returnToMenu()" class="text-gray-400 hover:text-gray-600 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </button>
+                <span class="text-gray-500 font-medium mr-2" id="progress-text">سوال ۱</span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gray-200 text-gray-600" id="category-badge">مبحث</span>
+                <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-bold" id="score-badge">امتیاز: ۰</span>
+            </div>
         </div>
         
         <!-- Progress Bar -->
-        <div class="w-full bg-gray-200 h-2">
-            <div id="progress-bar" class="bg-teal-600 h-2 transition-all duration-300" style="width: 0%"></div>
+        <div class="w-full bg-gray-200 h-1.5">
+            <div id="progress-bar" class="bg-indigo-600 h-1.5 transition-all duration-300" style="width: 0%"></div>
         </div>
 
         <!-- Question Content -->
-        <div class="p-6 flex-grow flex flex-col">
-            <h2 id="question-text" class="text-xl font-bold text-gray-800 mb-6 leading-8">
+        <div class="p-6 md:p-8 flex-grow flex flex-col overflow-y-auto">
+            <h2 id="question-text" class="text-xl md:text-2xl font-bold text-gray-800 mb-8 leading-9 select-none">
                 <!-- Question goes here -->
             </h2>
 
-            <div id="options-container" class="space-y-3">
+            <div id="options-container" class="space-y-4">
                 <!-- Options go here -->
             </div>
 
             <!-- Feedback Section -->
-            <div id="feedback-section" class="hidden mt-6 p-4 rounded-xl bg-blue-50 border border-blue-100 animate-fade-in">
+            <div id="feedback-section" class="hidden mt-8 p-5 rounded-xl bg-blue-50 border border-blue-100 animate-fade-in">
                 <div class="flex items-start">
-                    <div class="flex-shrink-0 mt-1">
+                    <div class="flex-shrink-0 mt-1 ml-3">
                         <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <div class="mr-3">
-                        <h3 class="text-sm font-bold text-blue-800 mb-1">توضیحات تشریحی:</h3>
-                        <p id="explanation-text" class="text-sm text-blue-700 leading-6"></p>
+                    <div>
+                        <h3 class="text-sm font-extrabold text-blue-800 mb-2">توضیحات تشریحی:</h3>
+                        <p id="explanation-text" class="text-base text-blue-700 leading-7 text-justify"></p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Footer -->
-        <div class="p-4 bg-gray-50 border-t flex justify-between items-center">
-            <button onclick="endQuiz()" class="text-red-500 hover:text-red-700 font-medium text-sm">خروج از آزمون</button>
-            <button id="next-btn" onclick="nextQuestion()" class="bg-gray-300 text-gray-500 font-bold py-2 px-6 rounded-lg cursor-not-allowed" disabled>
-                سوال بعدی
+        <div class="p-4 bg-gray-50 border-t flex justify-end items-center sticky bottom-0 z-10">
+            <button id="next-btn" onclick="nextQuestion()" class="bg-gray-300 text-gray-500 font-bold py-3 px-8 rounded-xl cursor-not-allowed transition-colors duration-200 flex items-center" disabled>
+                <span>سوال بعدی</span>
+                <svg class="w-4 h-4 mr-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             </button>
         </div>
     </div>
 
     <!-- Result Screen -->
     <div id="result-screen" class="bg-white p-8 rounded-2xl shadow-xl max-w-2xl w-full text-center hidden">
-        <div class="mb-6 text-yellow-500 flex justify-center">
+        <div class="mb-6 text-yellow-500 flex justify-center animate-bounce-short">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         </div>
         <h2 class="text-3xl font-bold text-gray-800 mb-2">پایان آزمون</h2>
-        <p class="text-gray-600 mb-8">عملکرد شما در فصل اکسیژن‌رسانی:</p>
+        <p class="text-gray-600 mb-8" id="result-message">نتیجه عملکرد شما:</p>
         
         <div class="grid grid-cols-2 gap-4 mb-8">
-            <div class="bg-green-50 p-4 rounded-xl">
-                <p class="text-sm text-green-600 mb-1">پاسخ‌های صحیح</p>
-                <p class="text-2xl font-bold text-green-700" id="final-correct">0</p>
+            <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                <p class="text-sm text-green-600 mb-1 font-bold">صحیح</p>
+                <p class="text-3xl font-bold text-green-700" id="final-correct">0</p>
             </div>
-            <div class="bg-red-50 p-4 rounded-xl">
-                <p class="text-sm text-red-600 mb-1">پاسخ‌های غلط</p>
-                <p class="text-2xl font-bold text-red-700" id="final-wrong">0</p>
+            <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                <p class="text-sm text-red-600 mb-1 font-bold">غلط</p>
+                <p class="text-3xl font-bold text-red-700" id="final-wrong">0</p>
             </div>
         </div>
 
-        <div class="text-4xl font-bold text-teal-600 mb-8">
-            <span id="final-score">0</span>%
+        <div class="text-5xl font-extrabold text-indigo-600 mb-2">
+            <span id="final-score">0</span><span class="text-2xl align-top">%</span>
         </div>
+        <p class="text-gray-400 text-sm mb-8">نمره نهایی</p>
 
-        <button onclick="location.reload()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition w-full">
-            تکرار آزمون
-        </button>
+        <div class="flex flex-col gap-3">
+             <button onclick="returnToMenu()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 px-8 rounded-xl shadow transition">
+                بازگشت به منوی اصلی
+            </button>
+            <button onclick="restartCurrentQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition">
+                تکرار همین آزمون
+            </button>
+        </div>
     </div>
 
     <script>
-        // Database of 70 Questions
-        const questions = [
+        // --- DATABASE ---
+        
+        // 1. Oxygenation Questions
+        const oxygenQuestions = [
             {
-                id: 1,
+                id: "ox-1", category: "اکسیژن‌رسانی",
                 question: "بیماری با سابقه نارسایی احتقانی قلب (CHF) بستری است. مکانیسم اصلی که باعث هیپوکسی در این بیمار می‌شود، کدام اختلال در فرآیند اکسیژن‌رسانی است؟",
                 options: ["کاهش تهویه (Ventilation)", "اختلال در انتشار (Diffusion) به دلیل ادم ریوی", "کاهش ظرفیت حمل اکسیژن", "افزایش فضای مرده"],
-                correct: 1,
-                explanation: "تجمع مایع در فضای بینابینی ریه (ادم) فاصله غشای آلوئولی-مویرگی را زیاد کرده و مانع انتشار گازها می‌شود."
+                correct: 1, explanation: "تجمع مایع در فضای بینابینی ریه (ادم) فاصله غشای آلوئولی-مویرگی را زیاد کرده و مانع انتشار گازها می‌شود."
             },
             {
-                id: 2,
+                id: "ox-2", category: "اکسیژن‌رسانی",
                 question: "چرا بیماران مبتلا به آنمی (کم‌خونی) شدید، با وجود داشتن ریه‌های سالم و SpO2 نرمال، ممکن است دچار تنگی نفس و خستگی شوند؟",
                 options: ["چون آنمی باعث انقباض عروق ریوی می‌شود.", "چون ظرفیت حمل اکسیژن خون (Oxygen Carrying Capacity) کاهش یافته است.", "چون آنمی باعث کاهش تحریک مرکز تنفس می‌شود.", "چون هموگلوبین موجود قادر به رهاسازی اکسیژن نیست."],
-                correct: 1,
-                explanation: "در آنمی، هموگلوبین (اتوبوس‌های حمل اکسیژن) کم است، حتی اگر تمام آن‌ها پر باشند (SpO2 نرمال)، اکسیژن کافی به بافت‌ها نمی‌رسد."
-            },
-            {
-                id: 3,
-                question: "کدام تغییر فیزیولوژیک در سالمندان، خطر عفونت‌های ریوی را در آن‌ها افزایش می‌دهد؟",
-                options: ["افزایش رفلکس سرفه", "کاهش فعالیت مژک‌های تنفسی (Cilia) و کاهش خاصیت ارتجاعی ریه", "افزایش حساسیت به هیپوکسی", "افزایش قطر راه‌های هوایی"],
-                correct: 1,
-                explanation: "کاهش پاکسازی موکوس توسط مژک‌ها و کاهش قدرت سرفه، سالمندان را مستعد تجمع ترشحات و پنومونی می‌کند."
-            },
-            {
-                id: 4,
-                question: "در مسمومیت با مونوکسید کربن (CO)، چرا بیمار با وجود هیپوکسی شدید بافتی، سیانوزه نمی‌شود و ممکن است رنگ پوست قرمز گیلاسی داشته باشد؟",
-                options: ["چون CO باعث گشادی عروق محیطی می‌شود.", "چون مولکول کربوکسی‌هموگلوبین رنگ قرمز روشن دارد و مشابه اکسی‌هموگلوبین است.", "چون CO تنها بر مغز اثر می‌گذارد نه پوست.", "چون فشار اکسیژن خون شریانی (PaO2) پایین می‌آید."],
-                correct: 1,
-                explanation: "CO با هموگلوبین پیوند محکمی می‌دهد که رنگ خون را قرمز روشن نگه می‌دارد، بنابراین سیانوز (که ناشی از هموگلوبین بدون اکسیژن و تیره است) دیده نمی‌شود."
-            },
-            {
-                id: 5,
-                question: "افزایش نرخ متابولیسم پایه (BMR) در شرایطی مانند تب یا ترمیم زخم، چه تاثیری بر نیاز اکسیژن بدن دارد؟",
-                options: ["تاثیری ندارد.", "نیاز به اکسیژن را کاهش می‌دهد.", "باعث افزایش تولید CO2 و افزایش نیاز به اکسیژن می‌شود.", "باعث کاهش تولید CO2 می‌شود."],
-                correct: 2,
-                explanation: "افزایش متابولیسم به سوخت (اکسیژن) بیشتر نیاز دارد و دود (CO2) بیشتری تولید می‌کند که باید دفع شود."
-            },
-            {
-                id: 6,
-                question: "کدام وضعیت پاتولوژیک منجر به ایجاد 'شنت' (Shunt) در ریه می‌شود؟",
-                options: ["آمبولی ریه (تهویه هست، پرفیوژن نیست)", "آتلکتازی یا پنومونی (پرفیوژن هست، تهویه نیست)", "آنمی", "مسمومیت با سیانید"],
-                correct: 1,
-                explanation: "شنت زمانی رخ می‌دهد که خون از کنار آلوئول‌های بسته یا پر از مایع عبور می‌کند و بدون گرفتن اکسیژن به قلب چپ برمی‌گردد."
-            },
-            {
-                id: 7,
-                question: "'حجم جاری' (Tidal Volume) چیست؟",
-                options: ["حجم هوایی که پس از یک بازدم عادی در ریه باقی می‌ماند.", "حجم هوایی که در هر دم یا بازدم عادی وارد یا خارج می‌شود (حدود ۵۰۰ سی‌سی).", "حداکثر حجمی که می‌توان با یک دم عمیق وارد ریه کرد.", "حجم هوایی که همیشه در ریه می‌ماند و خارج نمی‌شود."],
-                correct: 1,
-                explanation: "تایدال والیوم حجم تنفس معمولی و آرام است."
-            },
-            {
-                id: 8,
-                question: "کدام عامل باعث کاهش 'کمپلیانس' (Compliance) یا اتساع‌پذیری ریه می‌شود؟",
-                options: ["آمفیزم (به دلیل تخریب بافت الاستیک)", "فیبروز ریوی و ادم ریوی", "ورزش منظم", "برونشیت حاد"],
-                correct: 1,
-                explanation: "در فیبروز، بافت ریه سفت و خشک می‌شود و به سختی باز می‌شود (کاهش کمپلیانس)."
-            },
-            {
-                id: 9,
-                question: "'تنفس پارادوکسیکال' (Paradoxical Breathing) مشخصه کدام آسیب است؟",
-                options: ["شکستگی دنده‌ها به صورت شناور (Flail Chest)", "آسم شدید", "پنوموتوراکس ساده", "پلورزی"],
-                correct: 0,
-                explanation: "در Flail Chest، بخشی از قفسه سینه جدا شده و در دم به داخل فرو می‌رود و در بازدم بیرون می‌زند (حرکت معکوس)."
-            },
-            {
-                id: 10,
-                question: "گیرنده‌های شیمیایی مرکزی (Central Chemoreceptors) در بصل‌النخاع، بیشتر به تغییرات کدام ماده حساس هستند؟",
-                options: ["کاهش اکسیژن", "افزایش یون هیدروژن (H+) و CO2 در مایع مغزی-نخاعی", "کاهش گلوکز", "افزایش سدیم"],
-                correct: 1,
-                explanation: "محرک اصلی تنفس در افراد سالم، افزایش CO2 و یون هیدروژن است."
-            },
-             {
-                id: 11,
-                question: "در سمع ریه، صدای 'ویزینگ' (Wheezing) که بیشتر در بازدم شنیده می‌شود، نشانه چیست؟",
-                options: ["وجود مایع در آلوئول‌ها", "تنگی و اسپاسم راه‌های هوایی (مانند آسم)", "مالش پلور", "انسداد راه هوایی فوقانی"],
-                correct: 1,
-                explanation: "ویزینگ صدای موزیکال ناشی از عبور هوا از مجاری تنگ شده است."
-            },
-            {
-                id: 12,
-                question: "علامت 'ارتوپنه' (Orthopnea) چگونه ارزیابی می‌شود؟",
-                options: ["با پالس اکسیمتری", "با پرسش درباره تعداد بالش زیر سر هنگام خواب", "با تست ورزش", "با اسپیرومتری"],
-                correct: 1,
-                explanation: "ارتوپنه تنگی نفس در حالت خوابیده است. بیماران معمولاً می‌گویند 'با دو یا سه بالش می‌خوابم'."
-            },
-            {
-                id: 13,
-                question: "در بیماری که دچار 'پنوموتوراکس' (هوا در فضای پلور) شده است، در دق قفسه سینه چه صدایی شنیده می‌شود؟",
-                options: ["مات (Dullness)", "هیپررزونانس (Hyperresonance) یا طبل‌گونه", "رزونانس (Resonance)", "تخت (Flat)"],
-                correct: 1,
-                explanation: "وجود هوا باعث تشدید ارتعاش و ایجاد صدای بلند و طبل‌گونه (هیپررزونانس) می‌شود. (مایع صدای مات می‌دهد)."
-            },
-            {
-                id: 14,
-                question: "'سرفه خلط‌دار' (Productive Cough) که خلط زرد یا سبز دارد، بیشتر مطرح کننده چیست؟",
-                options: ["ادم ریوی", "عفونت باکتریال", "آلرژی", "سرطان ریه"],
-                correct: 1,
-                explanation: "خلط چرکی (Purulent) نشانه عفونت است. خلط سفید/شفاف معمولاً ویروسی یا آلرژیک است."
-            },
-            {
-                id: 15,
-                question: "تنفس 'کاسمال' (Kussmaul) با چه ویژگی‌هایی شناخته می‌شود و در چه شرایطی رخ می‌دهد؟",
-                options: ["تنفس‌های عمیق، سریع و منظم؛ در کتواسیدوز دیابتی (DKA)", "تنفس‌های کم‌عمق و کند؛ در مسمومیت با مخدر", "دوره‌های آپنه و هایپرونتیلاسیون؛ در نارسایی قلبی", "تنفس صدادار؛ در انسداد راه هوایی"],
-                correct: 0,
-                explanation: "بدن سعی می‌کند با تنفس عمیق و سریع، اسید (CO2) اضافی را دفع کند."
-            },
-            {
-                id: 16,
-                question: "در مشاهده قفسه سینه، استفاده از 'عضلات فرعی تنفسی' (مانند استرنوکلیدوماستوئید و عضلات بین‌دنده‌ای) نشانه چیست؟",
-                options: ["تنفس صحیح دیافراگمی", "افزایش کار تنفسی و زجر تنفسی (Respiratory Distress)", "وضعیت بدنی نامناسب", "ورزشکار بودن بیمار"],
-                correct: 1,
-                explanation: "در حالت عادی فقط دیافراگم کار می‌کند. استفاده از عضلات گردن و سینه نشانه تلاش زیاد برای تنفس است."
-            },
-            {
-                id: 17,
-                question: "'کلابینگ' (Clubbing) انگشتان در چه بیمارانی دیده می‌شود؟",
-                options: ["بیمارانی که دچار حمله حاد آسم شده‌اند.", "بیمارانی با هیپوکسی مزمن طولانی مدت (مانند COPD یا بیماری قلبی سیانوتیک)", "بیماران کم‌خون", "بیماران مبتلا به سل"],
-                correct: 1,
-                explanation: "تغییر شکل ناخن ناشی از کمبود اکسیژن مزمن در بافت‌هاست."
-            },
-            {
-                id: 18,
-                question: "اگر هنگام لمس قفسه سینه (Tactile Fremitus)، لرزش در یک سمت 'کاهش' یافته باشد، به چه معناست؟",
-                options: ["تراکم بافت ریه (پنومونی)", "وجود مانع مانند هوا (پنوموتوراکس) یا مایع (پلورال افیوژن) بین ریه و دست معاینه‌گر", "التهاب برونش‌ها", "طبیعی است"],
-                correct: 1,
-                explanation: "هوا و مایع دور ریه، لرزش صدا را جذب کرده و مانع رسیدن آن به دست می‌شوند. (در پنومونی لرزش افزایش می‌یابد)."
-            },
-            {
-                id: 19,
-                question: "بهترین زمان برای جمع‌آوری نمونه خلط (Sputum Specimen) چه زمانی است؟",
-                options: ["عصر", "بعد از غذا", "صبح زود، قبل از صبحانه", "قبل از خواب"],
-                correct: 2,
-                explanation: "ترشحات در طول شب در ریه جمع شده‌اند و غلیظ‌تر و حاوی باکتری بیشتری هستند. همچنین قبل از غذا از استفراغ جلوگیری می‌شود."
-            },
-            {
-                id: 20,
-                question: "تفسیر ABG: pH=7.30, PaCO2=55, HCO3=24. تشخیص؟",
-                options: ["اسیدوز متابولیک", "اسیدوز تنفسی (جبران نشده)", "آلکالوز تنفسی", "آلکالوز متابولیک"],
-                correct: 1,
-                explanation: "pH اسیدی، CO2 بالا (اسید تنفسی)، بیکربنات نرمال."
-            },
-            {
-                id: 21,
-                question: "'هموپتزی' (Hemoptysis) چیست؟",
-                options: ["استفراغ خونی", "وجود خون در ادرار", "سرفه خونی یا وجود رگه خونی در خلط با pH قلیایی", "خونریزی از بینی"],
-                correct: 2,
-                explanation: "هموپتزی خونریزی از دستگاه تنفس است که معمولاً روشن و قلیایی است."
-            },
-            {
-                id: 22,
-                question: "در ارزیابی توراسیک اکسکرژن (Thoracic Excursion)، عدم تقارن حرکت دست‌های پرستار در پشت بیمار نشانه چیست؟",
-                options: ["ضعف عضلات شکم", "مشکل در یک طرف قفسه سینه (مانند پنوموتوراکس، آتلکتازی یا شکستگی دنده در آن سمت)", "اسکولیوز", "طبیعی است"],
-                correct: 1,
-                explanation: "کاهش حرکت در یک طرف نشان می‌دهد آن ریه به خوبی باز نمی‌شود."
-            },
-            {
-                id: 23,
-                question: "صدای تنفسی 'استریدور' (Stridor) نشانه چیست و چه اهمیتی دارد؟",
-                options: ["انسداد در راه‌های هوایی کوچک (آسم)", "انسداد یا تنگی در راه‌های هوایی فوقانی (حنجره/نای)؛ یک اورژانس پزشکی است", "وجود مایع در ریه", "التهاب پرده جنب"],
-                correct: 1,
-                explanation: "استریدور صدای جیغ‌مانند و بلند در دم است که نشان‌دهنده خطر خفگی (انسداد راه هوایی اصلی) است."
-            },
-            {
-                id: 24,
-                question: "در پالس اکسیمتری، کدام عامل باعث خوانش کاذب پایین می‌شود؟",
-                options: ["مسمومیت با کربن مونوکسید", "لاک ناخن تیره، سردی اندام، ادم شدید", "تب بالا", "فشار خون بالا"],
-                correct: 1,
-                explanation: "هر عاملی که عبور نور یا جریان خون مویرگی را مختل کند، باعث خطا می‌شود."
-            },
-            {
-                id: 25,
-                question: "تست 'آلن' (Allen Test) قبل از چه کاری انجام می‌شود؟",
-                options: ["قبل از نمونه‌گیری خون شریانی (ABG) برای اطمینان از باز بودن شریان اولنار", "قبل از ساکشن کردن", "قبل از اکسیژن‌تراپی", "برای بررسی ورم دست"],
-                correct: 0,
-                explanation: "باید مطمئن شویم اگر شریان رادیال آسیب دید، شریان اولنار خون دست را تامین می‌کند."
-            },
-            {
-                id: 26,
-                question: "بیماری ترشحات غلیظ دارد و نمی‌تواند آن‌ها را خارج کند. تشخیص پرستاری اولویت‌دار چیست؟",
-                options: ["الگوی تنفسی نامؤثر", "اختلال در تبادل گاز", "پاکسازی نامؤثر راه هوایی (Ineffective Airway Clearance)", "ریسک آسپیراسیون"],
-                correct: 2,
-                explanation: "مشکل اصلی 'انسداد مسیر' با ترشحات است."
-            },
-            {
-                id: 27,
-                question: "بیماری به دلیل درد جراحی شکم، تنفس‌های سطحی دارد. او در معرض خطر کدام تشخیص پرستاری است؟",
-                options: ["الگوی تنفسی نامؤثر (Ineffective Breathing Pattern)", "افزایش برون‌ده قلبی", "پاکسازی نامؤثر راه هوایی", "تهویه خودبخودی مختل"],
-                correct: 0,
-                explanation: "مشکل در 'مکانیک' تنفس (عمق و ریتم) است که به دلیل درد محدود شده است."
-            },
-            {
-                id: 28,
-                question: "کدام هدف (Goal) برای بیمار با تشخیص 'اختلال در تبادل گاز' مناسب‌تر است؟",
-                options: ["بیمار طی ۲۴ ساعت آینده روش صحیح سرفه کردن را یاد می‌گیرد.", "بیمار طی ۱ ساعت آینده SpO2 بالای ۹۵٪ خواهد داشت.", "بیمار مایعات کافی می‌نوشد.", "بیمار درد نخواهد داشت."],
-                correct: 1,
-                explanation: "هدف باید مستقیماً مشکل تبادل گاز (اکسیژن و دی‌اکسید کربن) را نشانه بگیرد و قابل اندازه‌گیری باشد."
-            },
-            {
-                id: 29,
-                question: "در برنامه‌ریزی برای بیمار COPD، چرا رژیم غذایی وعده‌های کوچک و مکرر (Small frequent meals) توصیه می‌شود؟",
-                options: ["برای جلوگیری از چاقی", "چون معده پر به دیافراگم فشار می‌آورد و تنگی نفس را بدتر می‌کند.", "چون این بیماران مشکل بلع دارند.", "برای کاهش قند خون."],
-                correct: 1,
-                explanation: "اتساع معده حرکت دیافراگم را محدود می‌کند. همچنین خوردن غذای حجیم انرژی زیادی می‌گیرد و بیمار خسته می‌شود."
-            },
-            {
-                id: 30,
-                question: "کدام مداخله پرستاری برای 'ارتقای اتساع ریه' (Lung Expansion) مناسب است؟",
-                options: ["تجویز داروهای مسکن", "تغییر وضعیت (Positioning) مکرر و تشویق به تنفس عمیق", "ساکشن کردن", "تجویز آنتی‌بیوتیک"],
-                correct: 1,
-                explanation: "تغییر وضعیت و تنفس عمیق بهترین راه غیرتهاجمی برای باز کردن آلوئول‌هاست."
-            },
-            {
-                id: 31,
-                question: "برای پیشگیری از 'آتلکتازی' (روی هم خوابیدن ریه) بعد از عمل جراحی، مهمترین اقدام پرستاری چیست؟",
-                options: ["استراحت مطلق در تخت", "تشویق به استفاده از اسپیرومتر انگیزشی و خروج زود هنگام از تخت", "محدودیت مصرف مایعات", "اکسیژن‌تراپی با غلظت بالا"],
-                correct: 1,
-                explanation: "اتساع آلوئول‌ها با تنفس عمیق و تحرک از آتلکتازی جلوگیری می‌کند."
-            },
-            {
-                id: 32,
-                question: "در مراقبت از بیمار با 'پنومونی'، کدام اقدام به رقیق شدن ترشحات کمک می‌کند؟",
-                options: ["مصرف روزانه ۲ تا ۳ لیتر مایعات (هیدراتاسیون)", "استراحت مطلق", "مصرف دیورتیک", "ساکشن مداوم"],
-                correct: 0,
-                explanation: "هیدراتاسیون سیستمیک بهترین موکولیتیک (رقیق کننده خلط) طبیعی است."
-            },
-            {
-                id: 33,
-                question: "بیمار مبتلا به نارسایی قلبی چپ دچار تنگی نفس شبانه (PND) می‌شود. بهترین توصیه پرستاری چیست؟",
-                options: ["نوشیدن آب قبل از خواب", "خوابیدن با چند بالش یا در وضعیت نیمه‌نشسته", "ورزش قبل از خواب", "مصرف غذای سنگین شام"],
-                correct: 1,
-                explanation: "بالا بردن سر تخت بازگشت وریدی را کاهش داده و احتقان ریه را کم می‌کند."
-            },
-            {
-                id: 34,
-                question: "واکسیناسیون پنوموکوک و آنفولانزا برای کدام گروه اولویت حیاتی دارد؟",
-                options: ["کودکان سن مدرسه", "افراد بالای ۶۵ سال و بیماران مبتلا به بیماری‌های مزمن تنفسی/قلبی", "زنان باردار (فقط آنفولانزا)", "نوجوانان"],
-                correct: 1,
-                explanation: "این گروه در معرض خطر بالای مرگ‌ومیر ناشی از عفونت‌های تنفسی هستند."
-            },
-            {
-                id: 35,
-                question: "تشخیص 'خطر آسپیراسیون' برای کدام بیمار مطرح است؟",
-                options: ["بیمار با سطح هوشیاری کاهش یافته و رفلکس گگ ضعیف", "بیمار COPD هوشیار", "بیمار با شکستگی پا", "بیمار با درد قفسه سینه"],
-                correct: 0,
-                explanation: "فقدان رفلکس‌های محافظتی راه هوایی (بلع و سرفه) عامل اصلی آسپیراسیون است."
-            },
-            {
-                id: 36,
-                question: "چرا در بیماران COPD مزمن، اکسیژن با جریان بالا (High Flow) می‌تواند خطرناک باشد؟",
-                options: ["باعث خشک شدن شدید مخاط می‌شود.", "باعث مسمومیت با اکسیژن می‌شود.", "ممکن است 'درایو تنفسی هیپوکسیک' را سرکوب کرده و منجر به آپنه (ایست تنفسی) شود.", "باعث پارگی آلوئول‌ها می‌شود."],
-                correct: 2,
-                explanation: "محرک تنفس این افراد 'کمبود اکسیژن' است، نه 'افزایش دی‌اکسید کربن'."
-            },
-            {
-                id: 37,
-                question: "کدام ماسک اکسیژن قادر است غلظت دقیق و کنترل شده‌ای از اکسیژن (مثلاً دقیقاً ۲۴٪ یا ۴۰٪) را تحویل دهد؟",
-                options: ["ماسک ساده", "ماسک ونچوری (Venturi Mask)", "کانولای بینی", "ماسک ذخیره‌کننده‌دار"],
-                correct: 1,
-                explanation: "آداپتورهای رنگی ماسک ونچوری دقیق‌ترین ابزار برای بیماران COPD هستند."
-            },
-            {
-                id: 38,
-                question: "در استفاده از کانولای بینی (Nasal Cannula)، اگر جریان اکسیژن بیش از ۴ لیتر در دقیقه باشد، چه اقدامی ضروری است؟",
-                options: ["تعویض به ماسک", "افزودن رطوبت‌ساز (Humidifier)", "چرب کردن بینی", "کاهش جریان"],
-                correct: 1,
-                explanation: "جریان بالای ۴ لیتر مخاط را خشک می‌کند و نیاز به رطوبت‌ساز دارد."
-            },
-            {
-                id: 39,
-                question: "هنگام استفاده از ماسک 'Non-rebreather'، کیسه ذخیره باید در چه وضعیتی باشد؟",
-                options: ["کاملاً خالی و فشرده", "باید هنگام دم و بازدم پر بماند (حداقل یک‌سوم تا نیمه پر)", "باید فقط هنگام بازدم پر شود", "مهم نیست"],
-                correct: 1,
-                explanation: "اگر کیسه خالی شود، بیمار هوای کافی دریافت نمی‌کند و ممکن است CO2 بازدمی را دوباره تنفس کند."
-            },
-            {
-                id: 40,
-                question: "نکات ایمنی استفاده از اکسیژن در منزل شامل کدام مورد است؟",
-                options: ["کپسول را به صورت افقی نگه دارند.", "سیگار کشیدن در فاصله ۳ متری منبع اکسیژن ممنوع است.", "استفاده از لباس‌های پشمی توصیه می‌شود.", "سیلندر گاز را نزدیک شوفاژ بگذارند."],
-                correct: 1,
-                explanation: "اکسیژن اشتعال‌زا است. (لباس پشمی الکتریسیته ساکن دارد و خطرناک است، باید نخی باشد)."
-            },
-            {
-                id: 41,
-                question: "عارضه 'مسمومیت با اکسیژن' (Oxygen Toxicity) با چه علائمی ظاهر می‌شود؟",
-                options: ["سرفه خشک، درد زیر جناغ، تهوع و بی‌حسی اندام‌ها", "سیانوز و تنگی نفس", "تب و لرز", "برادیکاردی"],
-                correct: 0,
-                explanation: "اکسیژن با غلظت بالا (>۵۰٪) برای مدت طولانی به بافت ریه آسیب می‌زند."
-            },
-            {
-                id: 42,
-                question: "برای بیماری که از دهان تنفس می‌کند، کدام وسیله اکسیژن‌رسانی مناسب‌تر از کانولای بینی است؟",
-                options: ["ماسک ساده صورت", "کاتتر بینی", "چادر اکسیژن", "همان کانولا کافی است"],
-                correct: 0,
-                explanation: "کانولای بینی برای تنفس دهانی کارایی کمتری دارد (هرچند بی‌تاثیر نیست)، ماسک پوشش بهتری می‌دهد."
-            },
-            {
-                id: 43,
-                question: "جریان اکسیژن در 'ماسک ساده' (Simple Face Mask) نباید کمتر از ۵ لیتر در دقیقه باشد. چرا؟",
-                options: ["چون اکسیژن نمی‌رسد.", "برای جلوگیری از استنشاق مجدد دی‌اکسید کربن (Rebreathing CO2) تجمع یافته در ماسک.", "چون ماسک به صورت نمی‌چسبد.", "باعث خشکی چشم می‌شود."],
-                correct: 1,
-                explanation: "جریان هوا باید آنقدر باشد که CO2 بازدمی را از سوراخ‌های ماسک بیرون بشوید."
-            },
-            {
-                id: 44,
-                question: "استفاده از وازلین برای چرب کردن لب یا بینی بیماری که اکسیژن می‌گیرد، چه خطری دارد؟",
-                options: ["خطر عفونت", "خطر سوختگی شدید و اشتعال (وازلین ماده نفتی است)", "مسدود شدن کانولا", "ایجاد حساسیت"],
-                correct: 1,
-                explanation: "مواد نفتی در مجاورت اکسیژن خالص به شدت قابل اشتعال هستند. باید از لوبریکانت‌های محلول در آب استفاده کرد."
-            },
-            {
-                id: 45,
-                question: "دستگاه CPAP (فشار مثبت مداوم راه هوایی) عمدتاً برای درمان کدام اختلال استفاده می‌شود؟",
-                options: ["آسم", "آپنه انسدادی خواب (OSA)", "پنومونی", "آمبولی"],
-                correct: 1,
-                explanation: "CPAP با ایجاد فشار مثبت، راه هوایی را باز نگه می‌دارد و از کلاپس آن در خواب جلوگیری می‌کند."
-            },
-            {
-                id: 46,
-                question: "ساکشن کردن 'نازوتراکیال' (Nasotracheal) نیازمند چه تکنیکی است؟",
-                options: ["تکنیک تمیز (Clean)", "تکنیک استریل (Surgical Asepsis)", "شستشوی ساده دست", "استفاده از دستکش لاتکس معمولی"],
-                correct: 1,
-                explanation: "چون کاتتر وارد نای (محیط استریل) می‌شود، تکنیک باید کاملاً استریل باشد. (ساکشن دهان تمیز است)."
-            },
-            {
-                id: 47,
-                question: "برای پیشگیری از هیپوکسی حین ساکشن، چه کاری باید انجام داد؟",
-                options: ["ساکشن کردن طولانی (۳۰ ثانیه)", "هایپراکسیژنه کردن (Hyperoxygenation) بیمار قبل و بعد از ساکشن", "استفاده از کاتتر خیلی بزرگ", "ساکشن کردن مداوم حین ورود"],
-                correct: 1,
-                explanation: "ساکشن اکسیژن را تخلیه می‌کند، پس باید ذخیره اکسیژن را بالا برد."
-            },
-            {
-                id: 48,
-                question: "کاتتر ساکشن را باید چه زمانی فعال (Suctioning) کرد؟",
-                options: ["هنگام ورود کاتتر به راه هوایی", "فقط هنگام خروج کاتتر و به صورت چرخشی (Rotational)", "هم در ورود و هم در خروج", "فقط وقتی بیمار سرفه می‌کند"],
-                correct: 1,
-                explanation: "ساکشن هنگام ورود باعث آسیب مخاط و تخلیه اکسیژن می‌شود."
-            },
-            {
-                id: 49,
-                question: "اگر حین ساکشن ضربان قلب بیمار ناگهان افت کند (برادیکاردی)، نشانه چیست؟",
-                options: ["بهبودی وضعیت", "تحریک عصب واگ (Vagal Stimulation)", "اضطراب", "درد"],
-                correct: 1,
-                explanation: "تحریک واگ باعث برادیکاردی شدید و افت فشار خون می‌شود. اقدام: توقف ساکشن و اکسیژن‌دهی."
-            },
-            {
-                id: 50,
-                question: "حداکثر زمان مجاز برای هر دور ساکشن کردن چقدر است؟",
-                options: ["۵ ثانیه", "۱۰ تا ۱۵ ثانیه", "۳۰ ثانیه", "۱ دقیقه"],
-                correct: 1,
-                explanation: "طولانی‌تر شدن باعث هیپوکسی جدی می‌شود."
-            },
-            {
-                id: 51,
-                question: "هدف از باد کردن 'کاف' (Cuff) لوله تراشه یا تراکئوستومی چیست؟",
-                options: ["فیکس کردن لوله", "جلوگیری از صحبت کردن", "جلوگیری از نشت هوا (برای تهویه مکانیکی موثر) و پیشگیری از آسپیراسیون", "جلوگیری از عفونت"],
-                correct: 2,
-                explanation: "کاف فضای بین لوله و نای را می‌بندد تا هوا فقط از داخل لوله عبور کند و ترشحات حلق وارد ریه نشود."
-            },
-            {
-                id: 52,
-                question: "برای بیماری که تراکئوستومی دارد، چه وسیله‌ای همیشه باید بر بالین آماده باشد؟",
-                options: ["دستگاه شوک", "لوله تراکئوستومی یدک (هم‌سایز و یک سایز کوچکتر) و آمبوبگ", "ست پانسمان", "لوله معده"],
-                correct: 1,
-                explanation: "برای مدیریت خروج ناگهانی لوله (Accidental Decannulation)."
-            },
-            {
-                id: 53,
-                question: "ساکشن دهانی-حلقی (Oropharyngeal) با چه وسیله‌ای انجام می‌شود؟",
-                options: ["کاتتر نلاتون", "ساکشن یانکور (Yankauer)", "سرنگ", "برونکوسکوپ"],
-                correct: 1,
-                explanation: "یانکور ابزار صلب و سرکجی است که برای تخلیه ترشحات دهان مناسب است."
-            },
-            {
-                id: 54,
-                question: "بیماری با لوله تراشه بستری است. دهانشویه با کلرهگزیدین چه اهمیتی دارد؟",
-                options: ["فقط برای رفع بوی بد دهان", "پیشگیری از پنومونی ناشی از ونتیلاتور (VAP)", "جلوگیری از خشکی لب", "تمیز کردن دندان‌ها"],
-                correct: 1,
-                explanation: "میکروب‌های دهان عامل اصلی VAP هستند. دهانشویه استاندارد طلایی پیشگیری است."
-            },
-            {
-                id: 55,
-                question: "پوزیشن مناسب برای بیماری که هوشیار است و نیاز به ساکشن دارد چیست؟",
-                options: ["نیمه نشسته (Semi-Fowler's) با سر چرخانده به یک طرف", "خوابیده به پشت (Supine)", "ترندلنبرگ", "دمر"],
-                correct: 0,
-                explanation: "این پوزیشن به سرفه و تنفس کمک کرده و از آسپیراسیون جلوگیری می‌کند."
-            },
-            {
-                id: 56,
-                question: "در سیستم درناژ قفسه سینه (Chest Tube)، نوسان (Tidaling) سطح آب در محفظه واتر سیل نشان‌دهنده چیست؟",
-                options: ["انسداد لوله", "باز بودن لوله و عملکرد صحیح سیستم (انتقال تغییرات فشار پلور)", "وجود نشتی هوا", "پر شدن ریه"],
-                correct: 1,
-                explanation: "نوسان با تنفس طبیعی است. قطع آن یعنی انسداد یا باز شدن کامل ریه."
-            },
-            {
-                id: 57,
-                question: "مشاهده حباب‌های هوای 'مداوم' و پیوسته در محفظه واتر سیل نشانه چیست؟",
-                options: ["خروج طبیعی هوا از ریه", "نشتی هوا (Air Leak) در مسیر لوله یا سیستم", "عملکرد صحیح ساکشن", "کاهش فشار پلور"],
-                correct: 1,
-                explanation: "حباب باید فقط هنگام بازدم/سرفه باشد. حباب مداوم غیرطبیعی است."
-            },
-            {
-                id: 58,
-                question: "اگر لوله چست تیوب از 'بدن بیمار' خارج شود، اقدام فوری چیست؟",
-                options: ["رها کردن بیمار برای آوردن پزشک", "پوشاندن فوری محل با پانسمان فشاری/انسدادی (Occlusive) که سه طرف آن چسب زده شده", "فرو بردن انگشت در سوراخ", "باز گذاشتن سوراخ"],
-                correct: 1,
-                explanation: "پانسمان سه طرفه مثل دریچه یک‌طرفه عمل می‌کند (هوا خارج می‌شود اما وارد نمی‌شود) و از پنوموتوراکس فشاری جلوگیری می‌کند."
-            },
-            {
-                id: 59,
-                question: "اگر لوله چست تیوب از 'محفظه تخلیه' (باتل) جدا شود، اقدام فوری چیست؟",
-                options: ["کلمپ کردن لوله", "قرار دادن انتهای لوله در آب استریل (واتر سیل موقت)", "پانسمان کردن لوله", "بالا نگه داشتن لوله"],
-                correct: 1,
-                explanation: "کلمپ کردن خطرناک است. فرو بردن در آب ارتباط با هوای بیرون را قطع می‌کند."
-            },
-            {
-                id: 60,
-                question: "فیزیوتراپی قفسه سینه (CPT) شامل چه تکنیک‌هایی است؟",
-                options: ["فقط سرفه", "درناژ وضعیتی (Postural Drainage)، پرکاشن (ضربه) و ویریشن (لرزش)", "اسپیرومتری", "ساکشن"],
-                correct: 1,
-                explanation: "این تکنیک‌ها ترشحات را از دیواره جدا کرده و به راه‌های هوایی بزرگ هدایت می‌کنند."
-            },
-            {
-                id: 61,
-                question: "برای تخلیه ترشحات لوب‌های تحتانی ریه، بیمار باید در چه وضعیتی قرار گیرد؟",
-                options: ["نشسته", "ترندلنبرگ (سر پایین‌تر از پا)", "خوابیده به پشت", "خوابیده به شکم"],
-                correct: 1,
-                explanation: "استفاده از جاذبه زمین برای هدایت ترشحات به سمت نای."
-            },
-            {
-                id: 62,
-                question: "تکنیک 'تنفس با لب‌های جمع شده' (Pursed-lip) چه کمکی به بیمار COPD می‌کند؟",
-                options: ["افزایش اکسیژن‌گیری", "ایجاد فشار مثبت در راه‌های هوایی و جلوگیری از کلاپس آن‌ها حین بازدم (تخلیه بهتر CO2)", "تقویت عضلات گردن", "مرطوب کردن هوا"],
-                correct: 1,
-                explanation: "مانع حبس شدن هوا (Air trapping) می‌شود."
-            },
-            {
-                id: 63,
-                question: "روش صحیح استفاده از اسپیرومتر انگیزشی چیست؟",
-                options: ["فوت کردن داخل دستگاه", "دم عمیق و آرام و نگه داشتن نفس (برای بالا بردن توپ‌ها)", "تنفس سریع", "استفاده فقط در حالت خوابیده"],
-                correct: 1,
-                explanation: "هدف باز کردن آلوئول‌هاست، پس 'دم عمیق' لازم است."
-            },
-            {
-                id: 64,
-                question: "درناژ وضعیتی و پرکاشن در چه زمانی باید انجام شود؟",
-                options: ["بلافاصله بعد از غذا", "وقتی معده خالی است (مثلاً ۱ ساعت قبل یا ۲ ساعت بعد از غذا)", "وقتی بیمار درد دارد", "قبل از خواب"],
-                correct: 1,
-                explanation: "برای جلوگیری از استفراغ و آسپیراسیون."
-            },
-            {
-                id: 65,
-                question: "کنترااندیکاسیون (منع مصرف) پرکاشن قفسه سینه چیست؟",
-                options: ["سیستیک فیبروزیس", "شکستگی دنده‌ها، پوکی استخوان شدید، اختلالات خونریزی‌دهنده", "برونشکتازی", "پنومونی"],
-                correct: 1,
-                explanation: "ضربه زدن می‌تواند باعث آسیب استخوانی یا خونریزی داخلی شود."
-            },
-            {
-                id: 66,
-                question: "پوزیشن 'ارتوپنه' (نشسته با تکیه بر میز جلو) چگونه به تنفس کمک می‌کند؟",
-                options: ["کاهش درد", "اجازه می‌دهد قفسه سینه حداکثر انبساط را داشته باشد و از عضلات فرعی بهتر استفاده شود.", "کاهش فشار خون", "خواب‌آور است"],
-                correct: 1,
-                explanation: "این پوزیشن کلاسیک بیماران با دیسترس تنفسی شدید است."
-            },
-            {
-                id: 67,
-                question: "برای بیماری که دچار 'پنومونی یک‌طرفه' (مثلاً ریه چپ) است، بهترین پوزیشن برای بهبود اکسیژن‌رسانی چیست؟",
-                options: ["خوابیدن روی ریه درگیر (چپ)", "خوابیدن روی ریه سالم (راست) - Good Lung Down", "طاق‌باز", "نشسته"],
-                correct: 1,
-                explanation: "وقتی ریه سالم پایین است، خون بیشتری (توسط جاذبه) به سمت آن می‌رود و تطابق تهویه/پرفیوژن (V/Q Match) بهتر می‌شود."
-            },
-            {
-                id: 68,
-                question: "تکنیک سرفه 'هاف' (Huff Cough) چیست؟",
-                options: ["سرفه با دهان بسته", "بازدم پرفشار با صدای 'هه' بدون بستن گلوت (مناسب برای COPD)", "سرفه خشک", "عطسه مصنوعی"],
-                correct: 1,
-                explanation: "سرفه معمولی فشار را بالا برده و راه هوایی را در COPD می‌بندد. هاف کاف راه هوایی را باز نگه می‌دارد."
-            },
-            {
-                id: 69,
-                question: "کدام ویتامین‌ها برای خونسازی و اکسیژن‌رسانی ضروری هستند؟",
-                options: ["ویتامین C و D", "آهن، فولیک اسید و ویتامین B12", "کلسیم و فسفر", "ویتامین A"],
-                correct: 1,
-                explanation: "برای ساخت هموگلوبین و گلبول قرمز ضروری‌اند."
-            },
-            {
-                id: 70,
-                question: "اولین اقدام پرستاری در مواجهه با بیماری که ناگهان دچار دیسپنه (تنگی نفس) شدید شده است چیست؟",
-                options: ["زنگ زدن به پزشک", "بالا بردن سر تخت (High Fowler's) و بررسی علائم حیاتی", "گرفتن رگ", "دادن دارو"],
-                correct: 1,
-                explanation: "پوزیشن‌دهی سریع‌ترین و بی‌خطرترین اقدام برای تسهیل تنفس است."
-            }
+                correct: 1, explanation: "در آنمی، هموگلوبین (اتوبوس‌های حمل اکسیژن) کم است، حتی اگر تمام آن‌ها پر باشند (SpO2 نرمال)، اکسیژن کافی به بافت‌ها نمی‌رسد."
+            },
+            { id: "ox-3", category: "اکسیژن‌رسانی", question: "کدام تغییر فیزیولوژیک در سالمندان، خطر عفونت‌های ریوی را در آن‌ها افزایش می‌دهد؟", options: ["افزایش رفلکس سرفه", "کاهش فعالیت مژک‌های تنفسی (Cilia) و کاهش خاصیت ارتجاعی ریه", "افزایش حساسیت به هیپوکسی", "افزایش قطر راه‌های هوایی"], correct: 1, explanation: "کاهش پاکسازی موکوس توسط مژک‌ها و کاهش قدرت سرفه، سالمندان را مستعد تجمع ترشحات و پنومونی می‌کند." },
+            { id: "ox-4", category: "اکسیژن‌رسانی", question: "در مسمومیت با مونوکسید کربن (CO)، چرا بیمار با وجود هیپوکسی شدید بافتی، سیانوزه نمی‌شود و ممکن است رنگ پوست قرمز گیلاسی داشته باشد؟", options: ["چون CO باعث گشادی عروق محیطی می‌شود.", "چون مولکول کربوکسی‌هموگلوبین رنگ قرمز روشن دارد و مشابه اکسی‌هموگلوبین است.", "چون CO تنها بر مغز اثر می‌گذارد نه پوست.", "چون فشار اکسیژن خون شریانی (PaO2) پایین می‌آید."], correct: 1, explanation: "CO با هموگلوبین پیوند محکمی می‌دهد که رنگ خون را قرمز روشن نگه می‌دارد، بنابراین سیانوز دیده نمی‌شود." },
+            { id: "ox-5", category: "اکسیژن‌رسانی", question: "افزایش نرخ متابولیسم پایه (BMR) در شرایطی مانند تب یا ترمیم زخم، چه تاثیری بر نیاز اکسیژن بدن دارد؟", options: ["تاثیری ندارد.", "نیاز به اکسیژن را کاهش می‌دهد.", "باعث افزایش تولید CO2 و افزایش نیاز به اکسیژن می‌شود.", "باعث کاهش تولید CO2 می‌شود."], correct: 2, explanation: "افزایش متابولیسم به سوخت (اکسیژن) بیشتر نیاز دارد و دود (CO2) بیشتری تولید می‌کند." },
+            { id: "ox-6", category: "اکسیژن‌رسانی", question: "کدام وضعیت پاتولوژیک منجر به ایجاد 'شنت' (Shunt) در ریه می‌شود؟", options: ["آمبولی ریه", "آتلکتازی یا پنومونی (پرفیوژن هست، تهویه نیست)", "آنمی", "مسمومیت با سیانید"], correct: 1, explanation: "شنت زمانی رخ می‌دهد که خون از کنار آلوئول‌های بسته یا پر از مایع عبور می‌کند و بدون گرفتن اکسیژن عبور می‌کند." },
+            { id: "ox-7", category: "اکسیژن‌رسانی", question: "'حجم جاری' (Tidal Volume) چیست؟", options: ["حجم هوایی که پس از یک بازدم عادی در ریه باقی می‌ماند.", "حجم هوایی که در هر دم یا بازدم عادی وارد یا خارج می‌شود (حدود ۵۰۰ سی‌سی).", "حداکثر حجمی که می‌توان با یک دم عمیق وارد ریه کرد.", "حجم هوایی که همیشه در ریه می‌ماند."], correct: 1, explanation: "تایدال والیوم حجم تنفس معمولی و آرام است." },
+            { id: "ox-8", category: "اکسیژن‌رسانی", question: "کدام عامل باعث کاهش 'کمپلیانس' (Compliance) یا اتساع‌پذیری ریه می‌شود؟", options: ["آمفیزم", "فیبروز ریوی و ادم ریوی", "ورزش منظم", "برونشیت حاد"], correct: 1, explanation: "در فیبروز، بافت ریه سفت و خشک می‌شود و به سختی باز می‌شود." },
+            { id: "ox-9", category: "اکسیژن‌رسانی", question: "'تنفس پارادوکسیکال' مشخصه کدام آسیب است؟", options: ["شکستگی دنده‌ها به صورت شناور (Flail Chest)", "آسم شدید", "پنوموتوراکس ساده", "پلورزی"], correct: 0, explanation: "در Flail Chest، بخشی از قفسه سینه جدا شده و در دم به داخل فرو می‌رود و در بازدم بیرون می‌زند." },
+            { id: "ox-10", category: "اکسیژن‌رسانی", question: "گیرنده‌های شیمیایی مرکزی (Central Chemoreceptors) در بصل‌النخاع، بیشتر به تغییرات کدام ماده حساس هستند؟", options: ["کاهش اکسیژن", "افزایش یون هیدروژن (H+) و CO2 در مایع مغزی-نخاعی", "کاهش گلوکز", "افزایش سدیم"], correct: 1, explanation: "محرک اصلی تنفس در افراد سالم، افزایش CO2 و یون هیدروژن است." },
+            { id: "ox-11", category: "اکسیژن‌رسانی", question: "در سمع ریه، صدای 'ویزینگ' (Wheezing) که بیشتر در بازدم شنیده می‌شود، نشانه چیست؟", options: ["وجود مایع در آلوئول‌ها", "تنگی و اسپاسم راه‌های هوایی (مانند آسم)", "مالش پلور", "انسداد راه هوایی فوقانی"], correct: 1, explanation: "ویزینگ صدای موزیکال ناشی از عبور هوا از مجاری تنگ شده است." },
+            { id: "ox-12", category: "اکسیژن‌رسانی", question: "علامت 'ارتوپنه' (Orthopnea) چگونه ارزیابی می‌شود؟", options: ["با پالس اکسیمتری", "با پرسش درباره تعداد بالش زیر سر هنگام خواب", "با تست ورزش", "با اسپیرومتری"], correct: 1, explanation: "ارتوپنه تنگی نفس در حالت خوابیده است که با نشستن بهتر می‌شود." },
+            { id: "ox-13", category: "اکسیژن‌رسانی", question: "در 'پنوموتوراکس' (هوا در فضای پلور)، در دق قفسه سینه چه صدایی شنیده می‌شود؟", options: ["مات (Dullness)", "هیپررزونانس (Hyperresonance) یا طبل‌گونه", "رزونانس", "تخت"], correct: 1, explanation: "هوا باعث تشدید ارتعاش و ایجاد صدای بلند و طبل‌گونه می‌شود." },
+            { id: "ox-14", category: "اکسیژن‌رسانی", question: "'سرفه خلط‌دار' که خلط زرد یا سبز دارد، بیشتر مطرح کننده چیست؟", options: ["ادم ریوی", "عفونت باکتریال", "آلرژی", "سرطان ریه"], correct: 1, explanation: "خلط چرکی (Purulent) نشانه عفونت است." },
+            { id: "ox-15", category: "اکسیژن‌رسانی", question: "تنفس 'کاسمال' (Kussmaul) با چه ویژگی‌هایی شناخته می‌شود؟", options: ["تنفس‌های عمیق، سریع و منظم؛ در کتواسیدوز دیابتی (DKA)", "تنفس‌های کم‌عمق و کند", "دوره‌های آپنه", "تنفس صدادار"], correct: 0, explanation: "برای دفع اسید (CO2) اضافی در اسیدوز متابولیک رخ می‌دهد." },
+            { id: "ox-16", category: "اکسیژن‌رسانی", question: "استفاده از 'عضلات فرعی تنفسی' نشانه چیست؟", options: ["تنفس صحیح دیافراگمی", "افزایش کار تنفسی و زجر تنفسی", "وضعیت بدنی نامناسب", "ورزشکار بودن"], correct: 1, explanation: "نشانه تلاش زیاد برای تنفس است." },
+            { id: "ox-17", category: "اکسیژن‌رسانی", question: "'کلابینگ' انگشتان در چه بیمارانی دیده می‌شود؟", options: ["آسم حاد", "هیپوکسی مزمن طولانی مدت (مانند COPD)", "کم‌خونی", "سل"], correct: 1, explanation: "تغییر شکل ناخن ناشی از کمبود اکسیژن مزمن در بافت‌هاست." },
+            { id: "ox-18", category: "اکسیژن‌رسانی", question: "اگر هنگام لمس قفسه سینه، لرزش (Fremitus) در یک سمت 'کاهش' یافته باشد، نشانه چیست؟", options: ["تراکم بافت ریه", "وجود مانع مانند هوا (پنوموتوراکس) یا مایع", "التهاب برونش‌ها", "طبیعی است"], correct: 1, explanation: "هوا و مایع دور ریه، لرزش صدا را جذب می‌کنند." },
+            { id: "ox-19", category: "اکسیژن‌رسانی", question: "بهترین زمان برای جمع‌آوری نمونه خلط کی است؟", options: ["عصر", "بعد از غذا", "صبح زود، قبل از صبحانه", "قبل از خواب"], correct: 2, explanation: "ترشحات در طول شب جمع شده و غلیظ‌تر هستند." },
+            { id: "ox-20", category: "اکسیژن‌رسانی", question: "تفسیر ABG: pH=7.30, PaCO2=55, HCO3=24. تشخیص؟", options: ["اسیدوز متابولیک", "اسیدوز تنفسی", "آلکالوز تنفسی", "آلکالوز متابولیک"], correct: 1, explanation: "pH اسیدی و CO2 بالا نشانگر اسیدوز تنفسی است." },
+            { id: "ox-21", category: "اکسیژن‌رسانی", question: "'هموپتزی' چیست؟", options: ["استفراغ خونی", "وجود خون در ادرار", "سرفه خونی با pH قلیایی", "خونریزی از بینی"], correct: 2, explanation: "خونریزی از دستگاه تنفس که معمولاً روشن و قلیایی است." },
+            { id: "ox-22", category: "اکسیژن‌رسانی", question: "عدم تقارن حرکت قفسه سینه (Thoracic Excursion) نشانه چیست؟", options: ["ضعف عضلات شکم", "مشکل در یک طرف قفسه سینه (پنوموتوراکس/آتلکتازی)", "اسکولیوز", "طبیعی"], correct: 1, explanation: "ریه درگیر به خوبی باز نمی‌شود." },
+            { id: "ox-23", category: "اکسیژن‌رسانی", question: "صدای 'استریدور' (Stridor) نشانه چیست؟", options: ["آسم", "انسداد راه هوایی فوقانی (اورژانس)", "ادم ریه", "پلورزی"], correct: 1, explanation: "صدای جیغ‌مانند در دم، نشانه خطر خفگی است." },
+            { id: "ox-24", category: "اکسیژن‌رسانی", question: "کدام عامل باعث خوانش کاذب پایین پالس اکسیمتری می‌شود؟", options: ["مسمومیت CO", "سردی اندام، لاک ناخن، ادم", "تب بالا", "فشار خون بالا"], correct: 1, explanation: "اختلال در گردش خون مویرگی یا عبور نور." },
+            { id: "ox-25", category: "اکسیژن‌رسانی", question: "تست 'آلن' قبل از چه کاری انجام می‌شود؟", options: ["نمونه‌گیری گازهای خونی شریانی (ABG)", "ساکشن", "اکسیژن‌تراپی", "سرم تراپی"], correct: 0, explanation: "برای اطمینان از خونرسانی شریان اولنار." },
+            { id: "ox-26", category: "اکسیژن‌رسانی", question: "تشخیص پرستاری برای بیماری که ترشحات غلیظ دارد و نمی‌تواند خارج کند؟", options: ["الگوی تنفسی نامؤثر", "اختلال در تبادل گاز", "پاکسازی نامؤثر راه هوایی", "ریسک آسپیراسیون"], correct: 2, explanation: "مشکل اصلی انسداد مسیر با ترشحات است." },
+            { id: "ox-27", category: "اکسیژن‌رسانی", question: "بیماری که به دلیل درد جراحی تنفس سطحی دارد در معرض خطر چیست؟", options: ["الگوی تنفسی نامؤثر", "افزایش برون‌ده قلبی", "پاکسازی نامؤثر", "تهویه خودبخودی مختل"], correct: 0, explanation: "مشکل در مکانیک (عمق) تنفس است." },
+            { id: "ox-28", category: "اکسیژن‌رسانی", question: "کدام هدف برای تشخیص 'اختلال در تبادل گاز' مناسب است؟", options: ["یادگیری سرفه موثر", "SpO2 بالای ۹۵٪ طی ۱ ساعت", "نوشیدن مایعات", "کاهش درد"], correct: 1, explanation: "هدف باید مستقیماً با سطح گازهای خونی مرتبط باشد." },
+            { id: "ox-29", category: "اکسیژن‌رسانی", question: "چرا به بیماران COPD وعده‌های غذایی کوچک و مکرر توصیه می‌شود؟", options: ["جلوگیری از چاقی", "کاهش فشار معده پر بر دیافراگم و کاهش خستگی", "مشکل بلع", "کاهش قند"], correct: 1, explanation: "اتساع معده حرکت دیافراگم را محدود می‌کند." },
+            { id: "ox-30", category: "اکسیژن‌رسانی", question: "کدام مداخله برای 'ارتقای اتساع ریه' مناسب است؟", options: ["مسکن", "تغییر وضعیت مکرر و تنفس عمیق", "ساکشن", "آنتی‌بیوتیک"], correct: 1, explanation: "بهترین راه غیرتهاجمی برای باز کردن آلوئول‌ها." },
+            { id: "ox-31", category: "اکسیژن‌رسانی", question: "مهمترین اقدام برای پیشگیری از آتلکتازی بعد از عمل؟", options: ["استراحت مطلق", "اسپیرومتر انگیزشی و خروج از تخت", "محدودیت مایعات", "اکسیژن با غلظت بالا"], correct: 1, explanation: "اتساع آلوئول‌ها با تنفس عمیق و تحرک." },
+            { id: "ox-32", category: "اکسیژن‌رسانی", question: "در پنومونی، چه کاری به رقیق شدن ترشحات کمک می‌کند؟", options: ["هیدراتاسیون (۲-۳ لیتر مایعات)", "استراحت مطلق", "دیورتیک", "ساکشن مداوم"], correct: 0, explanation: "هیدراتاسیون سیستمیک بهترین موکولیتیک طبیعی است." },
+            { id: "ox-33", category: "اکسیژن‌رسانی", question: "بهترین توصیه برای تنگی نفس شبانه (PND)؟", options: ["آب خوردن", "خوابیدن با چند بالش (نیمه‌نشسته)", "ورزش", "غذای سنگین"], correct: 1, explanation: "کاهش بازگشت وریدی و احتقان ریه." },
+            { id: "ox-34", category: "اکسیژن‌رسانی", question: "واکسیناسیون پنوموکوک برای چه کسانی اولویت دارد؟", options: ["کودکان", "سالمندان و بیماران مزمن تنفسی/قلبی", "زنان باردار", "نوجوانان"], correct: 1, explanation: "گروه پرخطر برای مرگ‌ومیر تنفسی." },
+            { id: "ox-35", category: "اکسیژن‌رسانی", question: "چه کسی بیشتر در خطر 'آسپیراسیون' است؟", options: ["بیمار با کاهش هوشیاری و رفلکس گگ ضعیف", "بیمار COPD", "بیمار با شکستگی", "بیمار قلبی"], correct: 0, explanation: "فقدان رفلکس‌های محافظتی راه هوایی." },
+            { id: "ox-36", category: "اکسیژن‌رسانی", question: "خطر اکسیژن با جریان بالا در بیماران COPD مزمن چیست؟", options: ["خشکی مخاط", "مسمومیت اکسیژن", "سرکوب درایو تنفسی هیپوکسیک و آپنه", "پارگی آلوئول"], correct: 2, explanation: "محرک تنفس این افراد کمبود اکسیژن است." },
+            { id: "ox-37", category: "اکسیژن‌رسانی", question: "کدام ماسک غلظت دقیق اکسیژن (مثلاً ۲۴٪) را تحویل می‌دهد؟", options: ["ساده", "ونچوری (Venturi)", "کانولا", "ذخیره‌کننده"], correct: 1, explanation: "دقیق‌ترین ابزار برای بیماران COPD." },
+            { id: "ox-38", category: "اکسیژن‌رسانی", question: "اگر جریان کانولای بینی بیش از ۴ لیتر باشد چه باید کرد؟", options: ["تعویض به ماسک", "افزودن رطوبت‌ساز", "چرب کردن بینی", "کاهش جریان"], correct: 1, explanation: "برای جلوگیری از خشکی مخاط." },
+            { id: "ox-39", category: "اکسیژن‌رسانی", question: "کیسه ماسک Non-rebreather باید چه وضعیتی داشته باشد؟", options: ["کاملاً خالی", "حین دم و بازدم پر بماند (حداقل یک‌سوم)", "فقط در بازدم پر شود", "مهم نیست"], correct: 1, explanation: "برای تامین اکسیژن کافی." },
+            { id: "ox-40", category: "اکسیژن‌رسانی", question: "نکته ایمنی اکسیژن در منزل؟", options: ["افقی نگه داشتن کپسول", "ممنوعیت سیگار کشیدن در فاصله ۳ متری", "لباس پشمی", "نزدیک شوفاژ"], correct: 1, explanation: "خطر اشتعال و انفجار." },
+            { id: "ox-41", category: "اکسیژن‌رسانی", question: "علائم مسمومیت با اکسیژن؟", options: ["سرفه خشک، درد جناغ، تهوع، بی‌حسی", "سیانوز", "تب", "برادیکاردی"], correct: 0, explanation: "آسیب به بافت ریه ناشی از رادیکال‌های آزاد." },
+            { id: "ox-42", category: "اکسیژن‌رسانی", question: "برای بیماری که از دهان تنفس می‌کند کدام وسیله بهتر از کانولا است؟", options: ["ماسک ساده صورت", "کاتتر بینی", "چادر اکسیژن", "کانولا کافی است"], correct: 0, explanation: "پوشش بهتر دهان و بینی." },
+            { id: "ox-43", category: "اکسیژن‌رسانی", question: "چرا جریان ماسک ساده نباید کمتر از ۵ لیتر باشد؟", options: ["کمبود اکسیژن", "جلوگیری از استنشاق مجدد CO2 تجمع یافته", "چسبندگی ماسک", "خشکی چشم"], correct: 1, explanation: "شستن CO2 بازدمی از فضای ماسک." },
+            { id: "ox-44", category: "اکسیژن‌رسانی", question: "خطر استفاده از وازلین برای بیمار دریافت‌کننده اکسیژن؟", options: ["عفونت", "سوختگی شدید و اشتعال", "انسداد", "حساسیت"], correct: 1, explanation: "مواد نفتی در مجاورت اکسیژن مشتعل می‌شوند." },
+            { id: "ox-45", category: "اکسیژن‌رسانی", question: "کاربرد اصلی دستگاه CPAP؟", options: ["آسم", "آپنه انسدادی خواب (OSA)", "پنومونی", "آمبولی"], correct: 1, explanation: "باز نگه داشتن راه هوایی با فشار مثبت." },
+            { id: "ox-46", category: "اکسیژن‌رسانی", question: "تکنیک ساکشن نازوتراکیال؟", options: ["تمیز", "استریل (Surgical Asepsis)", "شستشوی دست", "دستکش معمولی"], correct: 1, explanation: "ورود به نای نیازمند استریلیته است." },
+            { id: "ox-47", category: "اکسیژن‌رسانی", question: "پیشگیری از هیپوکسی حین ساکشن؟", options: ["ساکشن طولانی", "هایپراکسیژنه کردن قبل و بعد ساکشن", "کاتتر بزرگ", "ساکشن مداوم"], correct: 1, explanation: "جبران اکسیژن تخلیه شده." },
+            { id: "ox-48", category: "اکسیژن‌رسانی", question: "زمان فعال کردن ساکشن (Suctioning)؟", options: ["هنگام ورود", "فقط هنگام خروج کاتتر و چرخشی", "ورود و خروج", "هنگام سرفه"], correct: 1, explanation: "جلوگیری از تروما و هیپوکسی حین ورود." },
+            { id: "ox-49", category: "اکسیژن‌رسانی", question: "برادیکاردی حین ساکشن نشانه چیست؟", options: ["بهبودی", "تحریک عصب واگ", "اضطراب", "درد"], correct: 1, explanation: "تحریک پاراسمپاتیک." },
+            { id: "ox-50", category: "اکسیژن‌رسانی", question: "حداکثر زمان مجاز هر دور ساکشن؟", options: ["۵ ثانیه", "۱۰ تا ۱۵ ثانیه", "۳۰ ثانیه", "۱ دقیقه"], correct: 1, explanation: "جلوگیری از هیپوکسی." },
+            { id: "ox-51", category: "اکسیژن‌رسانی", question: "هدف از باد کردن کاف لوله تراشه؟", options: ["فیکس کردن", "جلوگیری از صحبت", "جلوگیری از نشت هوا و آسپیراسیون", "جلوگیری از عفونت"], correct: 2, explanation: "ایزوله کردن راه هوایی." },
+            { id: "ox-52", category: "اکسیژن‌رسانی", question: "وسیله ضروری بر بالین بیمار تراکئوستومی؟", options: ["شوک", "لوله تراکئوستومی یدک و آمبوبگ", "پانسمان", "لوله معده"], correct: 1, explanation: "برای مدیریت خروج ناگهانی لوله." },
+            { id: "ox-53", category: "اکسیژن‌رسانی", question: "وسیله ساکشن دهانی-حلقی؟", options: ["نلاتون", "یانکور (Yankauer)", "سرنگ", "برونکوسکوپ"], correct: 1, explanation: "ابزار صلب مناسب دهان." },
+            { id: "ox-54", category: "اکسیژن‌رسانی", question: "اهمیت دهانشویه کلرهگزیدین در بیماران اینتوبه؟", options: ["بوی دهان", "پیشگیری از پنومونی ناشی از ونتیلاتور (VAP)", "خشکی لب", "تمیزی دندان"], correct: 1, explanation: "کاهش بار میکروبی دهان." },
+            { id: "ox-55", category: "اکسیژن‌رسانی", question: "پوزیشن بیمار هوشیار برای ساکشن؟", options: ["نیمه نشسته (Semi-Fowler's)", "طاق‌باز", "ترندلنبرگ", "دمر"], correct: 0, explanation: "تسهیل تنفس و سرفه." },
+            { id: "ox-56", category: "اکسیژن‌رسانی", question: "نوسان (Tidaling) در واتر سیل چست تیوب نشانه چیست؟", options: ["انسداد", "باز بودن لوله و عملکرد صحیح", "نشتی هوا", "پر شدن ریه"], correct: 1, explanation: "انتقال تغییرات فشار پلور." },
+            { id: "ox-57", category: "اکسیژن‌رسانی", question: "حباب هوای 'مداوم' در واتر سیل نشانه چیست؟", options: ["خروج طبیعی", "نشتی هوا (Air Leak) در سیستم", "عملکرد صحیح", "کاهش فشار"], correct: 1, explanation: "غیرطبیعی است و نشان دهنده سوراخ بودن مسیر است." },
+            { id: "ox-58", category: "اکسیژن‌رسانی", question: "اقدام فوری خروج چست تیوب از بدن؟", options: ["رها کردن", "پانسمان فشاری/انسدادی سه طرفه", "فرو بردن انگشت", "باز گذاشتن"], correct: 1, explanation: "جلوگیری از ورود هوا (پنوموتوراکس فشارنده)." },
+            { id: "ox-59", category: "اکسیژن‌رسانی", question: "اقدام فوری جدا شدن چست تیوب از محفظه؟", options: ["کلمپ کردن", "قرار دادن انتهای لوله در آب استریل", "پانسمان", "بالا گرفتن"], correct: 1, explanation: "ایجاد واتر سیل موقت." },
+            { id: "ox-60", category: "اکسیژن‌رسانی", question: "اجزای فیزیوتراپی قفسه سینه (CPT)؟", options: ["سرفه", "درناژ وضعیتی، پرکاشن و ویریشن", "اسپیرومتری", "ساکشن"], correct: 1, explanation: "کنده شدن ترشحات." },
+            { id: "ox-61", category: "اکسیژن‌رسانی", question: "پوزیشن تخلیه لوب‌های تحتانی؟", options: ["نشسته", "ترندلنبرگ (سر پایین‌تر)", "طاق‌باز", "دمر"], correct: 1, explanation: "استفاده از جاذبه." },
+            { id: "ox-62", category: "اکسیژن‌رسانی", question: "فایده تنفس لب‌غنچه‌ای (Pursed-lip) در COPD؟", options: ["افزایش اکسیژن", "ایجاد فشار مثبت و جلوگیری از کلاپس راه هوایی حین بازدم", "تقویت گردن", "رطوبت"], correct: 1, explanation: "تخلیه کامل‌تر هوا." },
+            { id: "ox-63", category: "اکسیژن‌رسانی", question: "روش صحیح اسپیرومتر انگیزشی؟", options: ["فوت کردن", "دم عمیق و نگه داشتن نفس", "تنفس سریع", "خوابیده"], correct: 1, explanation: "باز کردن آلوئول‌ها." },
+            { id: "ox-64", category: "اکسیژن‌رسانی", question: "زمان انجام CPT؟", options: ["بعد از غذا", "معده خالی (۱ ساعت قبل/۲ ساعت بعد غذا)", "هنگام درد", "قبل خواب"], correct: 1, explanation: "پیشگیری از استفراغ." },
+            { id: "ox-65", category: "اکسیژن‌رسانی", question: "منع مصرف پرکاشن؟", options: ["فیبروز کیستیک", "شکستگی دنده، پوکی استخوان، اختلال خونریزی", "برونشکتازی", "پنومونی"], correct: 1, explanation: "خطر تروما." },
+            { id: "ox-66", category: "اکسیژن‌رسانی", question: "فایده پوزیشن ارتوپنه؟", options: ["کاهش درد", "حداکثر انبساط قفسه سینه", "کاهش فشار", "خواب"], correct: 1, explanation: "بهترین وضعیت برای دیسترس تنفسی." },
+            { id: "ox-67", category: "اکسیژن‌رسانی", question: "پوزیشن در پنومونی یک‌طرفه؟", options: ["روی ریه درگیر", "روی ریه سالم (Good Lung Down)", "طاق‌باز", "نشسته"], correct: 1, explanation: "بهبود V/Q match." },
+            { id: "ox-68", category: "اکسیژن‌رسانی", question: "سرفه 'هاف' (Huff Cough)؟", options: ["دهان بسته", "بازدم پرفشار با صدای 'هه' (مناسب COPD)", "سرفه خشک", "عطسه"], correct: 1, explanation: "جلوگیری از بسته شدن راه هوایی." },
+            { id: "ox-69", category: "اکسیژن‌رسانی", question: "ویتامین‌های ضروری اکسیژن‌رسانی؟", options: ["C, D", "آهن، فولیک اسید، B12", "کلسیم", "A"], correct: 1, explanation: "ساخت RBC." },
+            { id: "ox-70", category: "اکسیژن‌رسانی", question: "اولین اقدام در دیسپنه ناگهانی؟", options: ["پزشک", "پوزیشن High Fowler's و بررسی علایم", "رگ گیری", "دارو"], correct: 1, explanation: "سریع‌ترین مداخله." }
         ];
 
+        // 2. Vital Signs Questions
+        const vitalsQuestions = [
+            { id: "vs-1", category: "علایم حیاتی", question: "مرکز اصلی تنظیم دمای بدن کجاست؟", options: ["مخچه", "هیپوتالاموس", "بصل‌النخاع", "تلاموس"], correct: 1, explanation: "ترموستات بدن در هیپوتالاموس است." },
+            { id: "vs-2", category: "علایم حیاتی", question: "انتقال حرارت از طریق 'تماس مستقیم' چه نام دارد؟", options: ["تشعشع", "هدایت (Conduction)", "جابجایی", "تبخیر"], correct: 1, explanation: "تماس فیزیکی مستقیم مثل کیسه یخ." },
+            { id: "vs-3", category: "علایم حیاتی", question: "در مرحله 'لرز' تب چه اتفاقی می‌افتد؟", options: ["نقطه تنظیم پایین آمده", "بدن در حال افزایش دما به نقطه تنظیم جدید است", "دفع گرما", "قطع تب"], correct: 1, explanation: "لرز مکانیسم تولید گرماست." },
+            { id: "vs-4", category: "علایم حیاتی", question: "دقیق‌ترین محل دمای مرکزی؟", options: ["شریان ریوی", "رکتال", "اگزیلاری", "تیمپانیک"], correct: 0, explanation: "استاندارد طلایی تهاجمی." },
+            { id: "vs-5", category: "علایم حیاتی", question: "ممنوعیت دمای رکتال؟", options: ["بیهوش", "نوزاد", "پلاکت پایین یا نوتروپنی", "لوله تراشه"], correct: 2, explanation: "خطر خونریزی و عفونت." },
+            { id: "vs-6", category: "علایم حیاتی", question: "تداخل در دمای دهانی؟", options: ["آب یخ", "سیگار کشیدن", "استامینوفن", "آدامس"], correct: 1, explanation: "سیگار و مایعات دما را تغییر می‌دهند (۲۰ دقیقه صبر کنید)." },
+            { id: "vs-7", category: "علایم حیاتی", question: "اثر ریتم سیرکادین بر دما؟", options: ["صبح کمترین، عصر بیشترین", "خواب افزایش", "ظهر اوج", "بی‌تاثیر"], correct: 0, explanation: "نوسان طبیعی روزانه." },
+            { id: "vs-8", category: "علایم حیاتی", question: "الگوی تب متناوب؟", options: ["همیشه بالا", "حداقل یک بار در ۲۴ ساعت نرمال می‌شود", "چند روز بالا چند روز پایین", "ثابت"], correct: 1, explanation: "نوسان تا خط پایه." },
+            { id: "vs-9", category: "علایم حیاتی", question: "علامت افتراقی گرمازدگی (Heat Stroke)؟", options: ["تعریق", "پوست گرم و خشک (عدم تعریق) و اختلال هوشیاری", "تشنگی", "کرامپ"], correct: 1, explanation: "از کار افتادن مکانیزم تعریق." },
+            { id: "vs-10", category: "علایم حیاتی", question: "روش دما در نوزاد زیر ۳ ماه؟", options: ["رکتال", "اگزیلاری (زیر بغل)", "تیمپانیک", "دهانی"], correct: 1, explanation: "ایمن‌ترین روش غربالگری." },
+            { id: "vs-11", category: "علایم حیاتی", question: "خطای دماسنج تیمپانیک؟", options: ["جرم گوش زیاد", "عفونت", "گریه", "خوابیدن"], correct: 0, explanation: "مانع عبور اشعه." },
+            { id: "vs-12", category: "علایم حیاتی", question: "علائم مرحله تب‌زدایی (فلاشینگ)؟", options: ["لرز", "پوست گرم و سرخ، تعریق", "سیانوز", "رنگ پریدگی"], correct: 1, explanation: "دفع گرما با گشادی عروق." },
+            { id: "vs-13", category: "علایم حیاتی", question: "گروه سنی با پاسخ تب ضعیف؟", options: ["نوزاد", "کودک", "سالمندان", "نوجوان"], correct: 2, explanation: "سیستم ایمنی ضعیف‌تر." },
+            { id: "vs-14", category: "علایم حیاتی", question: "دمای ۳۵ درجه؟", options: ["نرمال", "هیپوترمی خفیف", "شدید", "هایپرپیرکسی"], correct: 1, explanation: "زیر ۳۶ درجه." },
+            { id: "vs-15", category: "علایم حیاتی", question: "اقدام غلط در فاز لرز؟", options: ["پتو", "مایع گرم", "پاشویه (Tepid sponge)", "استراحت"], correct: 2, explanation: "پاشویه لرز را بدتر می‌کند." },
+            { id: "vs-16", category: "علایم حیاتی", question: "فرمول برون‌ده قلبی (CO)؟", options: ["فشار", "HR × SV", "مقاومت", "فشار نبض"], correct: 1, explanation: "ضربان × حجم ضربه‌ای." },
+            { id: "vs-17", category: "علایم حیاتی", question: "چه زمانی نبض اپیکال سمع شود؟", options: ["قبل دیگوکسین یا ریتم نامنظم", "همه", "تب", "ورزش"], correct: 0, explanation: "دقیق‌ترین روش شمارش." },
+            { id: "vs-18", category: "علایم حیاتی", question: "محل نبض اپیکال؟", options: ["پنجم بین دنده‌ای، خط مید-کلاویکولار چپ", "دوم راست", "چهارم چپ", "زایفویید"], correct: 0, explanation: "Apex قلب." },
+            { id: "vs-19", category: "علایم حیاتی", question: "کسر نبض (Pulse Deficit)؟", options: ["سیستول-دیاستول", "تفاوت نبض اپیکال و رادیال", "نبض ضعیف", "کندی"], correct: 1, explanation: "ضربان‌هایی که به محیط نمی‌رسند." },
+            { id: "vs-20", category: "علایم حیاتی", question: "اثر تحریک واگ بر قلب؟", options: ["تاکی‌کاردی", "برادیکاردی", "آریتمی", "بی‌اثر"], correct: 1, explanation: "کند کننده." },
+            { id: "vs-21", category: "علایم حیاتی", question: "قدرت نبض +1؟", options: ["جهنده", "نرمال", "ضعیف و نخی", "غایب"], correct: 2, explanation: "به سختی لمس می‌شود." },
+            { id: "vs-22", category: "علایم حیاتی", question: "اگر نبض محیطی لمس نشد؟", options: ["گزارش", "استفاده از داپلر", "گرم کردن", "بالا بردن"], correct: 1, explanation: "تایید وجود جریان خون." },
+            { id: "vs-23", category: "علایم حیاتی", question: "علت تاکی‌کاردی؟", options: ["هیپوترمی", "خونریزی/شوک", "ورزشکار", "خواب"], correct: 1, explanation: "جبران افت حجم." },
+            { id: "vs-24", category: "علایم حیاتی", question: "نبض اورژانس نوزاد؟", options: ["رادیال", "کاروتید", "براکیال", "پوپلیته"], correct: 2, explanation: "دسترس‌ترین شریان." },
+            { id: "vs-25", category: "علایم حیاتی", question: "چرا نبض کاروتید دوطرفه ممنوع است؟", options: ["فشار بالا", "قطع خونرسانی مغز", "سرفه", "درد"], correct: 1, explanation: "خطر سنکوپ." },
+            { id: "vs-26", category: "علایم حیاتی", question: "اثر ایستادن بر نبض؟", options: ["کاهش", "افزایش", "ثابت", "نامنظم"], correct: 1, explanation: "جبران تجمع خون در پا." },
+            { id: "vs-27", category: "علایم حیاتی", question: "نبض پارادوکس؟", options: ["افت فشار/نبض در دم", "تفاوت دست", "نامنظم", "افزایش در بازدم"], correct: 0, explanation: "در تامپوناد/آسم." },
+            { id: "vs-28", category: "علایم حیاتی", question: "داروی ایجاد کننده برادیکاردی؟", options: ["آتروپین", "بتا بلوکر", "اپینفرین", "کافئین"], correct: 1, explanation: "مهار سمپاتیک." },
+            { id: "vs-29", category: "علایم حیاتی", question: "تفاوت تاکی‌کاردی و پالپیتیشن؟", options: ["یکی است", "تاکی‌کاردی عینی، پالپیتیشن ذهنی (حس بیمار)", "خطرناک", "درد"], correct: 1, explanation: "پالپیتیشن حس تپش است." },
+            { id: "vs-30", category: "علایم حیاتی", question: "الکترولیت موثر بر ریتم؟", options: ["سدیم", "پتاسیم", "کلر", "آهن"], correct: 1, explanation: "حیاتی برای پتانسیل عمل." },
+            { id: "vs-31", category: "علایم حیاتی", question: "محرک اصلی تنفس فرد سالم؟", options: ["کمبود O2", "افزایش CO2", "pH", "دما"], correct: 1, explanation: "هیپرکاپنیا." },
+            { id: "vs-32", category: "علایم حیاتی", question: "محرک تنفس در COPD؟", options: ["CO2", "کاهش اکسیژن (Hypoxic Drive)", "هیدروژن", "رفلکس"], correct: 1, explanation: "عادت به CO2 بالا." },
+            { id: "vs-33", category: "علایم حیاتی", question: "الگوی شین-استوکس؟", options: ["سریع", "دوره‌های آپنه و تنفس عمیق/کاهنده", "نامنظم", "توقف"], correct: 1, explanation: "نزدیک مرگ." },
+            { id: "vs-34", category: "علایم حیاتی", question: "نحوه شمارش تنفس؟", options: ["آگاهانه", "بعد از نبض بدون اطلاع بیمار", "در خواب", "بعد غذا"], correct: 1, explanation: "جلوگیری از تغییر غیرارادی." },
+            { id: "vs-35", category: "علایم حیاتی", question: "تنفس بایوت نشانه چیست؟", options: ["DKA", "آسیب مغزی", "اضطراب", "نارسایی"], correct: 1, explanation: "نامنظم با آپنه." },
+            { id: "vs-36", category: "علایم حیاتی", question: "نسبت نبض به تنفس؟", options: ["۱:۱", "۴ به ۱", "۱۰:۱", "۲:۱"], correct: 1, explanation: "نرمال." },
+            { id: "vs-37", category: "علایم حیاتی", question: "علامت اولیه هیپوکسی؟", options: ["سیانوز", "بی‌قراری", "برادیکاردی", "افت فشار"], correct: 1, explanation: "حساسیت مغز." },
+            { id: "vs-38", category: "علایم حیاتی", question: "پوزیشن تسهیل تنفس؟", options: ["Supine", "Fowler's (نشسته)", "Prone", "پهلو"], correct: 1, explanation: "آزادی دیافراگم." },
+            { id: "vs-39", category: "علایم حیاتی", question: "صدای استرتوروس؟", options: ["خرخر (خروپف)", "سوت", "قرچ قرچ", "نرمال"], correct: 0, explanation: "انسداد نسبی فوقانی." },
+            { id: "vs-40", category: "علایم حیاتی", question: "SpO2 ۹۸٪ در آنمی؟", options: ["اکسیژن کافیست", "خیر، ظرفیت کل کم است", "بی‌ربط", "خطا"], correct: 1, explanation: "اشباع خوب است اما هموگلوبین کم است." },
+            { id: "vs-41", category: "علایم حیاتی", question: "علت تاکی‌پنه؟", options: ["مخدر", "ساقه مغز", "تب و درد", "خواب"], correct: 2, explanation: "افزایش نیاز متابولیک." },
+            { id: "vs-42", category: "علایم حیاتی", question: "ارزیابی عمق تنفس؟", options: ["تعداد", "مشاهده حرکات قفسه سینه", "پالس", "گوشی"], correct: 1, explanation: "کیفی است." },
+            { id: "vs-43", category: "علایم حیاتی", question: "کپنوگرافی؟", options: ["O2", "CO2 بازدمی", "pH", "حجم"], correct: 1, explanation: "پایش تهویه." },
+            { id: "vs-44", category: "علایم حیاتی", question: "اولویت در مسمومیت مخدر؟", options: ["فشار", "تعداد تنفس", "نبض", "دما"], correct: 1, explanation: "دپرسیون تنفسی." },
+            { id: "vs-45", category: "علایم حیاتی", question: "خطای پالس اکسیمتری؟", options: ["فشار بالا", "نور، لاک، لرزش", "تب", "تاکی‌کاردی"], correct: 1, explanation: "تداخل نوری/حرکتی." },
+            { id: "vs-46", category: "علایم حیاتی", question: "تعریف فشار خون؟", options: ["نیروی وارده خون به دیواره شریان", "ضربان", "حجم", "مقاومت"], correct: 0, explanation: "فشار جانبی." },
+            { id: "vs-47", category: "علایم حیاتی", question: "فشار نبض (Pulse Pressure)؟", options: ["جمع", "سیستول منهای دیاستول", "میانگین", "نصف"], correct: 1, explanation: "اختلاف ماکزیمم و مینیمم." },
+            { id: "vs-48", category: "علایم حیاتی", question: "خطای کاف باریک (کوچک)؟", options: ["کاذب پایین", "کاذب بالا", "بی‌اثر", "سکوت"], correct: 1, explanation: "فشار بیشتر برای بستن رگ لازم است." },
+            { id: "vs-49", category: "علایم حیاتی", question: "خطای کاف پهن (بزرگ)؟", options: ["کاذب پایین", "کاذب بالا", "دقیق", "بی‌تفاوت"], correct: 0, explanation: "فشار کمتر رگ را می‌بندد." },
+            { id: "vs-50", category: "علایم حیاتی", question: "فجوه سمعی (Auscultatory Gap)؟", options: ["ناپدید شدن موقت صدا در فشار بالا", "خرابی گوشی", "فاصله صداها", "کوروتکوف ۵"], correct: 0, explanation: "باعث کم خواندن سیستول می‌شود." },
+            { id: "vs-51", category: "علایم حیاتی", question: "پیشگیری از خطای Gap؟", options: ["باد کردن زیاد", "تعیین سیستول با لمس قبل از سمع", "کاف اطفال", "تکرار"], correct: 1, explanation: "تکنیک دو مرحله‌ای." },
+            { id: "vs-52", category: "علایم حیاتی", question: "دیاستول کدام فاز است؟", options: ["فاز ۱", "فاز ۵ (قطع صدا)", "فاز ۴", "بلندترین"], correct: 1, explanation: "سکوت کامل." },
+            { id: "vs-53", category: "علایم حیاتی", question: "تشخیص هایپرتنشن؟", options: ["یک بار", "میانگین دو بار در دو ویزیت", "سردرد", "۱۴۰/۹۰"], correct: 1, explanation: "نیاز به تکرار دارد." },
+            { id: "vs-54", category: "علایم حیاتی", question: "افت فشار وضعیتی؟", options: ["خواب", "افت ۲۰ سیستول/۱۰ دیاستول با ایستادن", "سرگیجه", "غذا"], correct: 1, explanation: "ناتوانی در جبران جاذبه." },
+            { id: "vs-55", category: "علایم حیاتی", question: "منع فشار خون؟", options: ["دست غالب", "ماستکتومی/فیستول", "سرم", "گزینه ۲ و ۳"], correct: 3, explanation: "خطر ادم لنفاوی یا خرابی فیستول." },
+            { id: "vs-56", category: "علایم حیاتی", question: "بازو بالاتر از قلب؟", options: ["کاذب پایین", "کاذب بالا", "دقیق", "بی‌اثر"], correct: 0, explanation: "اثر جاذبه." },
+            { id: "vs-57", category: "علایم حیاتی", question: "بازو پایین‌تر از قلب؟", options: ["کاذب پایین", "کاذب بالا", "دقیق", "سکوت"], correct: 1, explanation: "تجمع خون." },
+            { id: "vs-58", category: "علایم حیاتی", question: "حداقل MAP؟", options: ["۳۰", "۶۰", "۱۰۰", "۱۲۰"], correct: 1, explanation: "برای پرفیوژن اعضا." },
+            { id: "vs-59", category: "علایم حیاتی", question: "چرا روی لباس نگیریم؟", options: ["کثیفی", "صدای اصطکاک و عدم دقت", "کمی فشار", "اشکالی ندارد"], correct: 1, explanation: "مانع انتقال صدا." },
+            { id: "vs-60", category: "علایم حیاتی", question: "سندروم روپوش سفید؟", options: ["فشار بالا در مطب (استرس)", "پزشکان", "ترس", "فشار پایین"], correct: 0, explanation: "اضطراب محیط درمان." },
+            { id: "vs-61", category: "علایم حیاتی", question: "سرعت تخلیه باد؟", options: ["سریع", "۲-۳ میلی‌جیوه در ثانیه", "۱۰", "کند"], correct: 1, explanation: "دقت در خواندن." },
+            { id: "vs-62", category: "علایم حیاتی", question: "علایم شوک هیپوولمیک؟", options: ["فشار بالا نبض پایین", "فشار پایین، نبض بالا", "هر دو بالا", "هر دو پایین"], correct: 1, explanation: "جبران افت حجم." },
+            { id: "vs-63", category: "علایم حیاتی", question: "تریاد کوشینگ (ICP بالا)؟", options: ["فشار بالا، نبض پایین، تنفس نامنظم", "فشار پایین نبض بالا", "تب", "تاکی‌کاردی"], correct: 0, explanation: "برعکس شوک." },
+            { id: "vs-64", category: "علایم حیاتی", question: "اندازه بلادر کاف؟", options: ["طول ۸۰٪ و عرض ۴۰٪ دور بازو", "کل بازو", "نصف", "مهم نیست"], correct: 0, explanation: "قانون استاندارد." },
+            { id: "vs-65", category: "علایم حیاتی", question: "شریان فشار پا؟", options: ["فمورال", "پوپلیته", "دورسال", "هر جا"], correct: 1, explanation: "پشت زانو." },
+            { id: "vs-66", category: "علایم حیاتی", question: "چرا درد علامت حیاتی پنجم است؟", options: ["همیشگی", "تاکید بر بررسی همزمان", "مرگبار", "قانون"], correct: 1, explanation: "اولویت ارزیابی." },
+            { id: "vs-67", category: "علایم حیاتی", question: "استاندارد طلایی درد؟", options: ["علایم حیاتی", "گزارش خود بیمار", "چهره", "پرستار"], correct: 1, explanation: "تجربه ذهنی." },
+            { id: "vs-68", category: "علایم حیاتی", question: "مقیاس درد کودکان؟", options: ["عدد", "چهره‌ها (Wong-Baker)", "کلام", "شرح حال"], correct: 1, explanation: "قابل درک." },
+            { id: "vs-69", category: "علایم حیاتی", question: "تفویض علایم حیاتی؟", options: ["خیر", "بله در بیمار پایدار", "همیشه", "فقط فشار"], correct: 1, explanation: "بدون نیاز به قضاوت." },
+            { id: "vs-70", category: "علایم حیاتی", question: "ناله بیمار بیهوش؟", options: ["رفلکس", "درد", "خواب", "تشنج"], correct: 1, explanation: "نشانه رفتاری درد." }
+        ];
+
+        // --- APP LOGIC ---
+
+        let currentMode = ''; // 'oxygen', 'vitals', 'mixed'
+        let activeQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
         let answered = false;
 
         // Elements
-        const startScreen = document.getElementById('start-screen');
+        const menuScreen = document.getElementById('menu-screen');
         const quizScreen = document.getElementById('quiz-screen');
         const resultScreen = document.getElementById('result-screen');
+        
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
         const feedbackSection = document.getElementById('feedback-section');
         const explanationText = document.getElementById('explanation-text');
+        
         const nextBtn = document.getElementById('next-btn');
         const progressBar = document.getElementById('progress-bar');
         const progressText = document.getElementById('progress-text');
         const scoreBadge = document.getElementById('score-badge');
+        const categoryBadge = document.getElementById('category-badge');
 
-        function startQuiz() {
-            startScreen.classList.add('hidden');
+        function startQuiz(mode) {
+            currentMode = mode;
+            score = 0;
+            currentQuestionIndex = 0;
+            answered = false;
+
+            // Prepare Questions
+            if (mode === 'oxygen') {
+                activeQuestions = [...oxygenQuestions];
+            } else if (mode === 'vitals') {
+                activeQuestions = [...vitalsQuestions];
+            } else if (mode === 'mixed') {
+                // Combine and Shuffle
+                const combined = [...oxygenQuestions, ...vitalsQuestions];
+                activeQuestions = shuffleArray(combined);
+            }
+
+            // Switch Screens
+            menuScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
             quizScreen.classList.remove('hidden');
+
             loadQuestion();
         }
 
         function loadQuestion() {
             answered = false;
-            const currentQ = questions[currentQuestionIndex];
+            const currentQ = activeQuestions[currentQuestionIndex];
             
             // Update UI
-            questionText.textContent = `${currentQ.id}. ${currentQ.question}`;
-            progressText.textContent = `سوال ${currentQuestionIndex + 1} از ${questions.length}`;
-            progressBar.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            questionText.textContent = `${currentQuestionIndex + 1}. ${currentQ.question}`;
+            progressText.textContent = `سوال ${currentQuestionIndex + 1} از ${activeQuestions.length}`;
+            scoreBadge.textContent = `امتیاز: ${score}`;
+            progressBar.style.width = `${((currentQuestionIndex + 1) / activeQuestions.length) * 100}%`;
             
-            // Reset state
+            // Category Badge
+            categoryBadge.textContent = currentQ.category;
+            if (currentQ.category === "اکسیژن‌رسانی") {
+                categoryBadge.className = "px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800";
+            } else {
+                categoryBadge.className = "px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-800";
+            }
+            
+            // Reset Feedback
             optionsContainer.innerHTML = '';
             feedbackSection.classList.add('hidden');
             nextBtn.disabled = true;
             nextBtn.classList.add('cursor-not-allowed', 'bg-gray-300', 'text-gray-500');
-            nextBtn.classList.remove('bg-teal-600', 'hover:bg-teal-700', 'text-white');
+            nextBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700', 'text-white', 'shadow-md');
+            
+            if (currentQuestionIndex === activeQuestions.length - 1) {
+                nextBtn.querySelector('span').textContent = "مشاهده نتایج";
+            } else {
+                nextBtn.querySelector('span').textContent = "سوال بعدی";
+            }
 
             // Render Options
             currentQ.options.forEach((opt, index) => {
                 const btn = document.createElement('button');
-                btn.className = `option-card w-full text-right p-4 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition flex items-center`;
+                btn.className = `option-card w-full text-right p-4 md:p-5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-white transition flex items-center group`;
                 btn.onclick = () => checkAnswer(index, btn);
                 
                 const circle = document.createElement('div');
-                circle.className = "w-6 h-6 rounded-full border-2 border-gray-300 ml-3 flex-shrink-0 flex items-center justify-center";
+                circle.className = "w-6 h-6 rounded-full border-2 border-gray-400 ml-4 flex-shrink-0 flex items-center justify-center transition group-hover:border-indigo-400";
                 circle.innerHTML = `<div class="w-2.5 h-2.5 rounded-full bg-white opacity-0 transition"></div>`;
                 
                 const text = document.createElement('span');
+                text.className = "text-gray-700 font-medium text-lg";
                 text.textContent = opt;
 
                 btn.appendChild(circle);
@@ -693,24 +459,26 @@
             if (answered) return;
             answered = true;
 
-            const currentQ = questions[currentQuestionIndex];
+            const currentQ = activeQuestions[currentQuestionIndex];
             const allBtns = optionsContainer.children;
 
-            // Highlight chosen answer
+            // Highlight Logic
             if (selectedIndex === currentQ.correct) {
                 score++;
                 scoreBadge.textContent = `امتیاز: ${score}`;
-                btnElement.classList.add('correct-answer');
+                // Style Correct
+                btnElement.classList.add('correct-answer', 'ring-2', 'ring-green-500', 'ring-offset-2');
                 btnElement.querySelector('div').style.borderColor = '#10b981';
                 btnElement.querySelector('div > div').style.backgroundColor = '#10b981';
                 btnElement.querySelector('div > div').style.opacity = '1';
             } else {
-                btnElement.classList.add('wrong-answer');
+                // Style Wrong
+                btnElement.classList.add('wrong-answer', 'ring-2', 'ring-red-500', 'ring-offset-2');
                 btnElement.querySelector('div').style.borderColor = '#ef4444';
                 btnElement.querySelector('div > div').style.backgroundColor = '#ef4444';
                 btnElement.querySelector('div > div').style.opacity = '1';
                 
-                // Show correct answer
+                // Show Correct
                 const correctBtn = allBtns[currentQ.correct];
                 correctBtn.classList.add('correct-answer');
                 correctBtn.querySelector('div').style.borderColor = '#10b981';
@@ -720,26 +488,22 @@
 
             // Disable all buttons
             for (let btn of allBtns) {
-                btn.classList.add('disabled', 'cursor-default');
-                btn.onclick = null;
+                btn.disabled = true;
+                btn.classList.add('cursor-default');
             }
 
             // Show explanation
             explanationText.textContent = currentQ.explanation;
             feedbackSection.classList.remove('hidden');
 
-            // Enable Next Button
+            // Enable Next
             nextBtn.disabled = false;
             nextBtn.classList.remove('cursor-not-allowed', 'bg-gray-300', 'text-gray-500');
-            nextBtn.classList.add('bg-teal-600', 'hover:bg-teal-700', 'text-white', 'shadow-md');
-            
-            if (currentQuestionIndex === questions.length - 1) {
-                nextBtn.textContent = "مشاهده نتایج";
-            }
+            nextBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'text-white', 'shadow-md');
         }
 
         function nextQuestion() {
-            if (currentQuestionIndex < questions.length - 1) {
+            if (currentQuestionIndex < activeQuestions.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
             } else {
@@ -751,10 +515,36 @@
             quizScreen.classList.add('hidden');
             resultScreen.classList.remove('hidden');
             
-            const finalScorePercent = Math.round((score / questions.length) * 100);
+            const finalScorePercent = Math.round((score / activeQuestions.length) * 100);
             document.getElementById('final-correct').textContent = score;
-            document.getElementById('final-wrong').textContent = questions.length - score;
+            document.getElementById('final-wrong').textContent = activeQuestions.length - score;
             document.getElementById('final-score').textContent = finalScorePercent;
+            
+            let msg = "";
+            if (finalScorePercent >= 90) msg = "عالی! تسلط شما فوق‌العاده است.";
+            else if (finalScorePercent >= 70) msg = "خوب! تسلط قابل قبولی دارید.";
+            else msg = "نیاز به مطالعه بیشتر دارید.";
+            
+            document.getElementById('result-message').textContent = msg;
+        }
+
+        function returnToMenu() {
+            resultScreen.classList.add('hidden');
+            quizScreen.classList.add('hidden');
+            menuScreen.classList.remove('hidden');
+        }
+
+        function restartCurrentQuiz() {
+            startQuiz(currentMode);
+        }
+
+        // Utility: Fisher-Yates Shuffle
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
         }
     </script>
 </body>
